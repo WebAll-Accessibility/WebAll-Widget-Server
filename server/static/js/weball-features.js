@@ -131,7 +131,7 @@ const evidenziaLink = () => {
         }
     });
 
-    toggleClass('caratteri-dislessia', 'selected');
+    toggleClass('evidenzia-link', 'selected');
 }
 
 const zoom = () => {
