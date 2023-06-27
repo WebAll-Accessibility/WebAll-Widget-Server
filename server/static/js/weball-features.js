@@ -120,6 +120,20 @@ const cursoreGrande = () => {
     toggleClass('cursore-grande', 'selected');
 }
 
+const evidenziaLink = () => {
+    traverse(document.documentElement, (parent, child) => {
+        const operation = (hasClass('evidenzia-link', 'selected'))
+                                ? removeClassFromElement
+                                : addClassToElement;
+        
+        if (child.nodeName.toLowerCase() === 'a') {
+            operation(child, 'highlight');
+        }
+    });
+
+    toggleClass('caratteri-dislessia', 'selected');
+}
+
 const zoom = () => {
     toggleClass('zoom', 'selected');
     toggleClassOnElement(document.documentElement, 'zoom');
