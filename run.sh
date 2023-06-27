@@ -1,1 +1,1 @@
-cd ./server && node index.js && cd ../website && node index.js
+cd ./server && node index.js & cd ./website && node index.js
