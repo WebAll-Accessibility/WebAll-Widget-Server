@@ -134,6 +134,14 @@ const evidenziaLink = () => {
     toggleClass('evidenzia-link', 'selected');
 }
 
+const mutaAudio = () => {
+    toggleClass('silenzia-suoni', 'selected');
+    
+    document.querySelectorAll('video, audio').forEach((elem) => {
+        elem.muted = !elem.muted;
+    });
+}
+
 const zoom = () => {
     toggleClass('zoom', 'selected');
     toggleClassOnElement(document.documentElement, 'zoom');
