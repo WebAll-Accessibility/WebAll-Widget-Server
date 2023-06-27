@@ -6,6 +6,12 @@
     <title>Document</title>
 
     <script src="http://155.94.252.86:8081/bootstrap.js"></script>
+
+    <script>
+        function avviaAudio() {
+            document.getElementById('scimmia').play();
+        }
+    </script>
 </head>
 <body style="font-family: Arial, Helvetica, sans-serif; background-color: green;">
     <div style="width: 50px; height: 50px; background-color: red;">
@@ -13,10 +19,11 @@
 
     <h1>TESTING</h1>
     <p>Testing</p>
+    <input type="button" value="Avvia audio" onclick="avviaAudio()">
 
     <a href="www.youtube.com">YouTube</a>
 
-    <audio autoplay>
+    <audio id="scimmia">
         <source src="http://155.94.252.86:8080/resources/provaaudio.mp3" type="audio/mp3">
     </audio>
     
