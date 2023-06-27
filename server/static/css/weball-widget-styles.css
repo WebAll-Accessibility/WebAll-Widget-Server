@@ -1,0 +1,102 @@
+.invisible {
+    display: none;
+}
+
+.flex {
+    display: flex;
+}
+
+#weball-widget {
+    position: absolute;
+    width: 10vw;
+    height: 40%;
+    background-color: white;
+    color: black;
+    border-style: solid;
+    border-radius: 6px;
+    border-color: rgb(200, 200, 200);
+    padding: 16px;
+    gap: 8px, 8px;
+    flex-direction: column;
+    right: 50px;
+    bottom: 50px;
+    transition:all 0.2s ease-in-out;
+}
+
+#weball-button {
+    display: inherit;
+    right: 50px;
+    bottom: 50px;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
+
+.weball-widget-button:hover {
+    box-shadow:0 0 30px 0 #0000FF;
+    cursor: grab;
+    border-color: black;
+    border-radius: 6px;
+}
+
+#weball-widget-exit-button {
+    background-color: red;
+    color: white;
+    width: 100%;
+    height: 50%;
+}
+
+.weball-widget-button {
+    font-size: 1vh;
+    background-color: rgb(220, 220, 220);
+    width: 100%;
+    height: 100%;
+    margin: 4px;
+    border-color: rgb(200, 200, 200);
+    border-style: solid;
+    text-align: center;
+    font-weight: bold;
+}
+
+.selected {
+    background-color: blue;
+    color: white;
+}
+
+.inverted {
+    filter: invert(100%);
+}
+
+.grey-scale {
+    filter: grayscale();
+}
+
+.contrast {
+    filter: contrast(200%);
+}
+
+.saturation {
+    filter: saturate(200%);
+}
+
+.brightness {
+    filter: brightness(200%);
+}
+
+.sepia {
+    filter: sepia(50%);
+}
+
+.dyslexia {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 2px;
+}
+
+.zoom {
+    zoom: 2; 
+    -moz-transform: scale(2); 
+}
+
+.zoom-pointer {
+    cursor: url('http://155.94.252.86:8081/resources/pointer.svg'), auto;
+}
