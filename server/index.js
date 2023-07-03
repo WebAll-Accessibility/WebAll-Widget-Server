@@ -76,7 +76,7 @@ service.get('*', (req, res) => {
     checkUser(referrer, (user) => {
         if (!(user && user.length > 0)) {
             console.warn(`Refused connection from ${referrer}`);
-            res.status(403).end();
+            // res.status(403).end();
             return;
         }
 
