@@ -43,6 +43,7 @@ service.use((req, res, next) => {
 const checkUser = (url, callback) => {
     databaseConnection.query('SELECT * FROM users WHERE url = "?"', url, (err, result, fields) => {
         if (err) throw err;
+        console.log(result);
         callback(result)
     });
 }
