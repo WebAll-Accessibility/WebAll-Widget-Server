@@ -30,10 +30,8 @@ service.use((req, res, next) => {
             if (!(user && user.length > 0)) {
                 console.warn(`Refused connection from ${referrer}`);
                 res.status(403).end();
-                req.accepted = false;
             } else {
                 console.log(`Accepted connection from ${referrer}`);
-                req.accepted = true;
             }
         });
     }
@@ -89,16 +87,14 @@ service.listen(8081, () => {
     });
 });
 
-service.get('*', (req, res, next) => {
-    if (!req.accepted) return next();
-    
-    if (!fs.existsSync(path.join(__dirname, `./service/${req.path}`))) {
+service.get('*', (req, res) => {
+    if (!fs.existsSync(path.join(__dirname, `./service${req.path}`))) {
         res.status(404).end();
-        return next();
+        return;
     }
 
-    res.sendFile(path.join(__dirname, `./service/${req.path}`));
-});
+    res.sendFile(path.join(__dirname, `./service${req.path}`));
+})
 
 frontend.listen(8082, () => {
 });
