@@ -22,17 +22,32 @@ service.use(express.json());
 service.use(cors());
 frontend.use(express.static(path.join(__dirname, './frontend')));
 
+service.use((req, res, next) => {
+    if (req.method === 'GET') {
+        const referrer = req.get('Referrer');
+        
+        checkUser(referrer, (user) => {
+            if (!(user && user.length > 0)) {
+                console.warn(`Refused connection from ${referrer}`);
+                res.status(403).end();
+                req.accepted = false;
+            } else {
+                console.log(`Accepted connection from ${referrer}`);
+                req.accepted = true;
+            }
+        });
+    }
+
+    return next();
+});
+
 
 // Utility functions
 const checkUser = (url, callback) => {
-    let res = undefined;
-
     databaseConnection.query('SELECT * FROM users WHERE url = ?', url, (err, result, fields) => {
         if (err) throw err;
-        res = callback(result)
+        callback(result)
     });
-
-    return res;
 }
 
 
@@ -75,20 +90,7 @@ service.listen(8081, () => {
 });
 
 service.get('*', (req, res, next) => {
-    const referrer = req.get('Referrer');
-    
-    const s = checkUser(referrer, (user) => {
-        if (!(user && user.length > 0)) {
-            console.warn(`Refused connection from ${referrer}`);
-            res.status(403).end();
-            return false;
-        }
-
-        console.log(`Accepted connection from ${referrer}`);
-        return true;
-    });
-
-    if (!s) return next();
+    if (!req.accepted) return next();
     
     if (!fs.existsSync(path.join(__dirname, `./service${req.path}`))) {
         res.status(404).end();
