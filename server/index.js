@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const mysql = require('mysql2');
+const fs = require('fs');
+
 
 // Ugly global variables
 const service = express();
@@ -18,7 +20,7 @@ const databaseConnection = mysql.createConnection({
 // Express setup
 service.use(express.json());
 service.use(cors());
-service.use(express.static(path.join(__dirname, './service')));
+// service.use(express.static(path.join(__dirname, './service')));
 frontend.use(express.static(path.join(__dirname, './frontend')));
 
 service.use((req, res, next) => {
@@ -26,7 +28,7 @@ service.use((req, res, next) => {
         const referrer = req.get('Referrer');
         
         checkUser(referrer, (user) => {
-            if (!user) {
+            if (!(user && user.length > 0)) {
                 console.log(`Refused connection from ${referrer}`);
                 res.status(403).end();
             } else {
@@ -54,7 +56,7 @@ service.post('/register', (req, res) => {
     const rr = req.body;
     
     checkUser(rr.url, (result) => {
-        if (result) {
+        if (result && result.length > 0) {
             res.send({
                 status: 'Failed',
                 message: 'URL already registered'
@@ -86,6 +88,15 @@ service.listen(8081, () => {
         });
     });
 });
+
+service.get('*', (req, res) => {
+    if (!fs.existsSync(path.join(__dirname, `./service${req.path()}`))) {
+        res.status(404).end();
+        return;
+    }
+
+    res.sendFile(path.join(__dirname, `./service${req.path()}`));
+})
 
 frontend.listen(8082, () => {
 });
