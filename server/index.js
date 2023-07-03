@@ -50,15 +50,14 @@ const checkUser = (url, callback) => {
 
 // Request handlers
 service.post('/register', (req, res) => {
-    console.log(req.body.url);
-    const rr = JSON.parse(req.body);
+    const rr = req.body;
     
     checkUser(rr.url, (result) => {
         if (result) {
-            res.send(JSON.stringify({
+            res.send({
                 status: 'Failed',
                 message: 'URL already registered'
-            }));
+            });
 
             return;
         }
@@ -67,10 +66,10 @@ service.post('/register', (req, res) => {
         databaseConnection.query("INSERT INTO users values ?", [values], (err, result) => {
             if (err) throw err;
             
-            res.send(JSON.stringify({
+            res.send({
                 status: 'Success',
                 message: 'URL registered successfully'
-            }));
+            });
         });
     });
 });
