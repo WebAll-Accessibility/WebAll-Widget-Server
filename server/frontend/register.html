@@ -17,7 +17,8 @@
                 headers: {'Content-Type': 'application/json'}, 
                 body: JSON.stringify(data)
             }).then(res => {
-                const response = JSON.parse(res.json());
+                const response = res.json();
+                console.log(response);
                 alert(`${response.status}: ${response.message}`);
             });
         }
