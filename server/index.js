@@ -77,7 +77,7 @@ service.listen(8081, () => {
 service.get('*', (req, res, next) => {
     const referrer = req.get('Referrer');
     
-    const ss = checkUser(referrer, (user) => {
+    const s = checkUser(referrer, (user) => {
         if (!(user && user.length > 0)) {
             console.warn(`Refused connection from ${referrer}`);
             res.status(403).end();
