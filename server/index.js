@@ -30,8 +30,10 @@ service.use((req, res, next) => {
             if (!(user && user.length > 0)) {
                 console.warn(`Refused connection from ${referrer}`);
                 res.status(403).end();
+                req.weballAccepted = false;
             } else {
                 console.log(`Accepted connection from ${referrer}`);
+                req.weballAccepted = true;
             }
         });
     }
@@ -88,6 +90,8 @@ service.listen(8081, () => {
 });
 
 service.get('*', (req, res) => {
+    if (!req.weballAccepted) return;
+    
     if (!fs.existsSync(path.join(__dirname, `./service${req.path}`))) {
         res.status(404).end();
         return;
