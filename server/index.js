@@ -50,7 +50,7 @@ const checkUser = (url, callback) => {
 
 // Request handlers
 service.post('/register', (req, res) => {
-    console.log(req.body);
+    console.log(req.body.url);
     const rr = JSON.parse(req.body);
     
     checkUser(rr.url, (result) => {
