@@ -65,7 +65,7 @@ service.listen(8081, () => {
         if (err) throw err;
         databaseConnection.query('CREATE TABLE IF NOT EXISTS users(url TEXT, pw TEXT);', (e, r) => {
             if (err) throw err;
-            console.log('Created users table');
+            // console.log('Created users table');
         });
     });
 });
@@ -75,12 +75,12 @@ service.get('*', (req, res) => {
     
     checkUser(referrer, (user) => {
         if (!(user && user.length > 0)) {
-            console.warn(`Refused connection from ${referrer}`);
+            // console.warn(`Refused connection from ${referrer}`);
             res.status(403).end();
             return;
         }
     
-        console.log(`Accepted connection from ${referrer}`);
+        // console.log(`Accepted connection from ${referrer}`);
         
         if (!fs.existsSync(path.join(__dirname, `./service${req.path}`))) {
             res.status(404).end();
