@@ -34,7 +34,7 @@ service.use((req, res, next) => {
             }
         });
     }
-    
+
     return next();
 });
 
@@ -50,8 +50,8 @@ const checkUser = (url, callback) => {
 
 // Request handlers
 service.post('/register', (req, res) => {
+    console.log(req.body);
     const rr = JSON.parse(req.body);
-    console.log(rr);
     
     checkUser(rr.url, (result) => {
         if (result) {
