@@ -11,7 +11,8 @@ const databaseConnection = mysql.createConnection({
     user: 'weball',
     host: 'localhost',
     password: 'WebAll123!',
-    database: 'weball'
+    database: 'weball',
+    insecureAuth: true
 });
 
 
