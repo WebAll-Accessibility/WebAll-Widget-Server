@@ -88,6 +88,8 @@ service.listen(8081, () => {
 });
 
 service.get('*', (req, res) => {
+    if (res.closed) return;
+    
     if (!fs.existsSync(path.join(__dirname, `./service${req.path}`))) {
         res.status(404).end();
         return;
