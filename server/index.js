@@ -25,10 +25,14 @@ frontend.use(express.static(path.join(__dirname, './frontend')));
 
 // Utility functions
 const checkUser = (url, callback) => {
+    let res = undefined;
+
     databaseConnection.query('SELECT * FROM users WHERE url = ?', url, (err, result, fields) => {
         if (err) throw err;
-        callback(result)
+        res = callback(result)
     });
+
+    return res;
 }
 
 
@@ -70,19 +74,20 @@ service.listen(8081, () => {
     });
 });
 
-service.get('*', (req, res) => {
+service.get('*', (req, res, next) => {
     const referrer = req.get('Referrer');
     
-    checkUser(referrer, (user) => {
+    const ss = checkUser(referrer, (user) => {
         if (!(user && user.length > 0)) {
             console.warn(`Refused connection from ${referrer}`);
-            // res.status(403).end();
-            return;
+            res.status(403).end();
+            return false;
         }
 
         console.log(`Accepted connection from ${referrer}`);
     });
-    
+
+    if (!s) return next();
     
     if (!fs.existsSync(path.join(__dirname, `./service${req.path}`))) {
         res.status(404).end();
