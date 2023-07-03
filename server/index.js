@@ -89,12 +89,12 @@ service.listen(8081, () => {
     });
 });
 
-service.get('*', (req, res, next) => {
-    if (!req.weballAccepted) return next();
+service.get('*', (req, res) => {
+    if (!req.weballAccepted) return;
     
     if (!fs.existsSync(path.join(__dirname, `./service${req.path}`))) {
         res.status(404).end();
-        return next();
+        return;
     }
 
     res.sendFile(path.join(__dirname, `./service${req.path}`));
