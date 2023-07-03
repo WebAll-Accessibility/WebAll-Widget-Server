@@ -97,8 +97,9 @@ service.get('*', (req, res, next) => {
         return;
     }
 
+    res.set('Content-Type', req.get('Content-Type'));
     res.sendFile(path.join(__dirname, `./service${req.path}`));
-})
+});
 
 frontend.listen(8082, () => {
 });
