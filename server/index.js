@@ -66,7 +66,7 @@ service.post('/register', (req, res) => {
         }
 
         const values = [rr.url, rr.password];
-        databaseConnection.query('INSERT INTO users (url, password) values ?', [values], (err, result) => {
+        databaseConnection.query('INSERT INTO users (url, password) VALUES ?', [values], (err, result) => {
             if (err) throw err;
             
             res.send({
