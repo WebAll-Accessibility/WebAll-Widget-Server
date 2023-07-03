@@ -90,12 +90,12 @@ service.listen(8081, () => {
 });
 
 service.get('*', (req, res) => {
-    if (!fs.existsSync(path.join(__dirname, `./service${req.path()}`))) {
+    if (!fs.existsSync(path.join(__dirname, `./service${req.path}`))) {
         res.status(404).end();
         return;
     }
 
-    res.sendFile(path.join(__dirname, `./service${req.path()}`));
+    res.sendFile(path.join(__dirname, `./service${req.path}`));
 })
 
 frontend.listen(8082, () => {
