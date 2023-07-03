@@ -72,9 +72,7 @@ service.listen(8081, () => {
 
 service.get('*', (req, res) => {
     const referrer = req.get('Referrer');
-        
-    let s = false;
-
+    
     checkUser(referrer, (user) => {
         if (!(user && user.length > 0)) {
             console.warn(`Refused connection from ${referrer}`);
@@ -83,18 +81,14 @@ service.get('*', (req, res) => {
         }
     
         console.log(`Accepted connection from ${referrer}`);
-        s = true;
         
-    });
-
-    if (!s) return;
+        if (!fs.existsSync(path.join(__dirname, `./service${req.path}`))) {
+            res.status(404).end();
+            return;
+        }
     
-    if (!fs.existsSync(path.join(__dirname, `./service${req.path}`))) {
-        res.status(404).end();
-        return;
-    }
-
-    res.sendFile(path.join(__dirname, `./service${req.path}`));
+        res.sendFile(path.join(__dirname, `./service${req.path}`));
+    });
 })
 
 frontend.listen(8082, () => {
