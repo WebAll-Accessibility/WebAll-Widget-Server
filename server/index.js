@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 // Ugly global variables
 const service = express();
@@ -11,8 +11,7 @@ const databaseConnection = mysql.createConnection({
     user: 'weball',
     host: 'localhost',
     password: 'WebAll123!',
-    database: 'weball',
-    insecureAuth: true
+    database: 'weball'
 });
 
 
