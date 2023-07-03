@@ -1,16 +1,86 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
+const mysql = require('mysql');
 
-const app = express();
-app.use(cors());
-app.use(express.static(path.join(__dirname, './static')));
+// Ugly global variables
+const service = express();
+const frontend = express();
 
-// app.get('/:lang/:file', (req, res) => {
-//     console.log(req.params);
-    
-// });
-
-app.listen(8081, () => {
+const databaseConnection = mysql.createConnection({
+    user: 'weball',
+    host: 'localhost',
+    password: 'WebAll123!',
+    database: 'weball'
 });
 
+
+// Express setup
+service.use(cors());
+service.use(express.static(path.join(__dirname, './service')));
+frontend.use(express.static(path.join(__dirname, './frontend')));
+
+service.use((req, res, next) => {
+    if (req.method === 'GET') {
+        const referrer = req.get('Referrer');
+        
+        checkUser(referrer, (user) => {
+            if (!user) {
+                res.status(403).end();
+            }
+        });
+    }
+
+    return next();
+});
+
+
+// Utility functions
+const checkUser = (url, callback) => {
+    databaseConnection.query('SELECT * FROM users WHERE url = ?', url, (err, result, fields) => {
+        if (err) throw err;
+        callback(result)
+    });
+}
+
+
+// Request handlers
+service.post('/register', (req, res) => {
+    const rr = JSON.parse(req.body);
+    
+    checkUser(rr.url, (result) => {
+        if (result) {
+            res.send(JSON.stringify({
+                status: 'Failed',
+                message: 'URL already registered'
+            }));
+
+            return;
+        }
+
+        const values = [rr.url, rr.password];
+        databaseConnection.query("INSERT INTO users values ?", [values], (err, result) => {
+            if (err) throw err;
+            
+            res.send(JSON.stringify({
+                status: 'Success',
+                message: 'URL registered successfully'
+            }));
+        });
+    });
+});
+
+
+// Application init
+service.listen(8081, () => {
+    databaseConnection.connect((err) => {
+        if (err) throw err;
+        databaseConnection.query('CREATE TABLE IF NOT EXISTS users(url TEXT, pw TEXT);', (e, r) => {
+            if (err) throw err;
+            console.log('Created users table');
+        });
+    });
+});
+
+frontend.listen(8082, () => {
+});
