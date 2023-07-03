@@ -29,7 +29,7 @@ service.use((req, res, next) => {
         checkUser(referrer, (user) => {
             if (!(user && user.length > 0)) {
                 console.warn(`Refused connection from ${referrer}`);
-                res.sendStatus(403).end();
+                res.sendStatus(403);
             } else {
                 console.log(`Accepted connection from ${referrer}`);
             }
