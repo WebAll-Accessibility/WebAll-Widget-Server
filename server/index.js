@@ -16,6 +16,7 @@ const databaseConnection = mysql.createConnection({
 
 
 // Express setup
+service.use(express.json());
 service.use(cors());
 service.use(express.static(path.join(__dirname, './service')));
 frontend.use(express.static(path.join(__dirname, './frontend')));
@@ -26,11 +27,14 @@ service.use((req, res, next) => {
         
         checkUser(referrer, (user) => {
             if (!user) {
+                console.log(`Refused connection from ${referrer}`);
                 res.status(403).end();
+            } else {
+                console.log(`Accepted connection from ${referrer}`);
             }
         });
     }
-
+    
     return next();
 });
 
@@ -47,6 +51,7 @@ const checkUser = (url, callback) => {
 // Request handlers
 service.post('/register', (req, res) => {
     const rr = JSON.parse(req.body);
+    console.log(rr);
     
     checkUser(rr.url, (result) => {
         if (result) {
