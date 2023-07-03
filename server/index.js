@@ -85,6 +85,7 @@ service.get('*', (req, res, next) => {
         }
 
         console.log(`Accepted connection from ${referrer}`);
+        return true;
     });
 
     if (!s) return next();
