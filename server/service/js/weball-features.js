@@ -42,30 +42,12 @@ const traverse = (root, action) => {
         
         for (const child of node.children) {
             action(node, child);
-        }
-
-        for (const child of node.children) {
             inner(child);
         }
     }
 
     inner(root);
 }
-
-const traverseUp = (root, action) => {
-    const inner = (node) => {
-        action(null, node);
-        
-        if (!node.parent)
-            return;
-        
-        action(node.parent, node);
-        inner(node.parent, action);
-    }
-
-    inner(root);
-}
-
 const invertiColori = () => {
     toggleClass('inverti-colori', 'selected');
     toggleClassOnElement(parent.document.documentElement, 'weball-inverted');
