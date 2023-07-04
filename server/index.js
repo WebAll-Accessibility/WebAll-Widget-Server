@@ -36,6 +36,15 @@ const checkUser = (url, callback) => {
 service.post('/register', (req, res) => {
     const rr = req.body;
     
+    if (!rr.url || !rr.password) {
+        res.send({
+            status: 'Failed',
+            message: 'Some fields are not filled'
+        });
+
+        return;
+    }
+
     checkUser(rr.url, (result) => {
         if (result && result.length > 0) {
             res.send({
@@ -73,6 +82,11 @@ service.listen(8081, () => {
 service.get('*', (req, res) => {
     const referrer = req.get('Referrer');
     
+    if (!referrer) {
+        res.status(403).end();
+        return;
+    }
+
     checkUser(referrer, (user) => {
         if (!(user && user.length > 0)) {
             // console.warn(`Refused connection from ${referrer}`);
@@ -89,7 +103,7 @@ service.get('*', (req, res) => {
     
         res.sendFile(path.join(__dirname, `./service${req.path}`));
     });
-})
+});
 
 frontend.listen(8082, () => {
 });
