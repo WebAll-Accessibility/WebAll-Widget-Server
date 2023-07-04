@@ -1,3 +1,5 @@
+document = window.parent.document;
+
 const elementHasClass = (element, cls) => element.classList.contains(cls);
 const hasClass = (id, cls) => elementHasClass(document.getElementById(id), cls);
 
