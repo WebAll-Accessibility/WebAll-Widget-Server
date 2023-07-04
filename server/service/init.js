@@ -17,8 +17,13 @@ const loadStyles = (stylesheet) => {
 
 const loadHTML = (documentName) => {
     let f = document.createElement('iframe');
-    f.src = `http://155.94.252.86:8081/html/${documentName}`;
     f.id = 'weball-content-iframe';
+
+    fetch(`http://155.94.252.86:8081/html/${documentName}`, {method: 'GET'})
+        .then((response) => response.text())
+        .then((text) => f.innerHTML += text)
+        .catch((err) => console.warn(err));
+
     document.body.appendChild(f);
 }
 
