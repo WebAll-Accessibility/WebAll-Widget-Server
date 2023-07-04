@@ -3,9 +3,7 @@ const laodScript = (scriptName) => {
     s.src = `http://155.94.252.86:8081/js/${scriptName}`;
     s.async = true;
     s.type = 'text/javascript';
-    document.getElementById('weball-content-iframe')
-                .getElementsByTagName('html')[0]
-                .getElementsByTagName('head')[0]
+    document.getElementsByTagName('head')[0]
                 .appendChild(s);
 }
 
@@ -13,9 +11,7 @@ const loadStyles = (stylesheet) => {
     let l = document.createElement('link');
     l.rel = 'stylesheet';
     l.href = `http://155.94.252.86:8081/css/${stylesheet}`;
-    document.getElementById('weball-content-iframe')
-                .getElementsByTagName('html')[0]
-                .getElementsByTagName('head')[0]
+    document.getElementsByTagName('head')[0]
                 .appendChild(l);
 }
 
