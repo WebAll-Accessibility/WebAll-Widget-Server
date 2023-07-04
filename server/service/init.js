@@ -24,4 +24,4 @@ const loadHTML = (documentName) => {
 
 loadHTML('weball-widget.html');
 laodScript('weball-features.js');
-loadStyles('weball-widget-styles.css')
+loadStyles('weball-base-styles.css')
