@@ -3,21 +3,25 @@ const laodScript = (scriptName) => {
     s.src = `http://155.94.252.86:8081/js/${scriptName}`;
     s.async = true;
     s.type = 'text/javascript';
-    document.getElementsByTagName('head')[0].appendChild(s);
+    document.getElementById('weball-content-iframe')
+                .getElementsByTagName('head')[0]
+                .appendChild(s);
 }
 
 const loadStyles = (stylesheet) => {
     let l = document.createElement('link');
     l.rel = 'stylesheet';
     l.href = `http://155.94.252.86:8081/css/${stylesheet}`;
-    document.getElementsByTagName('head')[0].appendChild(l);
+    document.getElementById('weball-content-iframe')
+                .getElementsByTagName('head')[0]
+                .appendChild(l);
 }
 
 const loadHTML = (documentName) => {
-    fetch(`http://155.94.252.86:8081/html/${documentName}`, {method: 'GET'})
-        .then((response) => response.text())
-        .then((text) => document.getElementsByTagName('body')[0].innerHTML += text)
-        .catch((err) => console.warn(err));
+    let f = document.createElement('iframe');
+    f.src = `http://155.94.252.86:8081/html/${documentName}`;
+    f.id = 'weball-content-iframe';
+    document.body.appendChild(f);
 }
 
 laodScript('weball-features.js');
