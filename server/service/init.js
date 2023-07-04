@@ -23,5 +23,6 @@ const loadHTML = (documentName) => {
 }
 
 loadStyles('weball-base-styles.css');
+loadStyles('weball-features-styles.css');
 loadHTML('weball-widget.html');
 //laodScript('weball-features.js');

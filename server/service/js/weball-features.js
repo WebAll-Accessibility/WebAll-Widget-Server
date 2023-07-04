@@ -1,5 +1,3 @@
-document = window.parent.document;
-
 const elementHasClass = (element, cls) => element.classList.contains(cls);
 const hasClass = (id, cls) => elementHasClass(document.getElementById(id), cls);
 
@@ -70,66 +68,66 @@ const traverseUp = (root, action) => {
 
 const invertiColori = () => {
     toggleClass('inverti-colori', 'selected');
-    toggleClassOnElement(document.documentElement, 'inverted');
+    toggleClassOnElement(parent.document.documentElement, 'weball-inverted');
 }
 
 const scalaDiGrigi = () => {
     toggleClass('scala-di-grigi', 'selected');
-    toggleClassOnElement(document.documentElement, 'grey-scale');
+    toggleClassOnElement(parent.document.documentElement, 'weball-grey-scale');
 }
 
 const contrasto = () => {
     toggleClass('contrasto', 'selected');
-    toggleClassOnElement(document.documentElement, 'contrast');
+    toggleClassOnElement(parent.document.documentElement, 'weball-contrast');
 }
 
 const saturazione = () => {
     toggleClass('saturazione', 'selected');
-    toggleClassOnElement(document.documentElement, 'saturation');
+    toggleClassOnElement(parent.document.documentElement, 'weball-saturation');
 }
 
 const luminosita = () => {
     toggleClass('luminosita', 'selected');
-    toggleClassOnElement(document.documentElement, 'brightness');
+    toggleClassOnElement(parent.document.documentElement, 'weball-brightness');
 }
 
 const epilessia = () => {
     toggleClass('epilessia', 'selected');
-    toggleClassOnElement(document.documentElement, 'sepia');
+    toggleClassOnElement(parent.document.documentElement, 'weball-sepia');
 }
 
 const caratteriDislessia = () => {
-    traverse(document.documentElement, (parent, child) => {
+    traverse(parent.document.documentElement, (parent, child) => {
         const operation = (hasClass('caratteri-dislessia', 'selected'))
                                 ? removeClassFromElement
                                 : addClassToElement;
         
-        operation(child, 'dyslexia');
+        operation(child, 'weball-dyslexia');
     });
 
     toggleClass('caratteri-dislessia', 'selected');
 }
 
 const cursoreGrande = () => {
-    traverse(document.documentElement, (parent, child) => {
+    traverse(parent.document.documentElement, (parent, child) => {
         const operation = (hasClass('cursore-grande', 'selected'))
                                 ? removeClassFromElement
                                 : addClassToElement;
         
-        operation(child, 'zoom-pointer');
+        operation(child, 'weball-zoom-pointer');
     });
 
     toggleClass('cursore-grande', 'selected');
 }
 
 const evidenziaLink = () => {
-    traverse(document.documentElement, (parent, child) => {
+    traverse(parent.document.documentElement, (parent, child) => {
         const operation = (hasClass('evidenzia-link', 'selected'))
                                 ? removeClassFromElement
                                 : addClassToElement;
         
         if (child.nodeName.toLowerCase() === 'a') {
-            operation(child, 'highlight');
+            operation(child, 'weball-highlight');
         }
     });
 
@@ -139,14 +137,14 @@ const evidenziaLink = () => {
 const mutaAudio = () => {
     toggleClass('silenzia-suoni', 'selected');
     
-    document.querySelectorAll('video, audio').forEach((elem) => {
+    parent.document.querySelectorAll('video, audio').forEach((elem) => {
         elem.muted = !elem.muted;
     });
 }
 
 const zoom = () => {
     toggleClass('zoom', 'selected');
-    toggleClassOnElement(document.documentElement, 'zoom');
+    toggleClassOnElement(parent.document.documentElement, 'weball-zoom');
 }
 
 const weball = () => {
