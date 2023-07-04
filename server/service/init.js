@@ -21,7 +21,11 @@ const loadHTML = (documentName) => {
 
     fetch(`http://155.94.252.86:8081/html/${documentName}`, {method: 'GET'})
         .then((response) => response.text())
-        .then((text) => f.textContent = text)
+        .then((text) => {
+            f.contentWindow.document.open();
+            f.contentWindow.document.write(text);
+            f.contentWindow.document.close();
+        })
         .catch((err) => console.warn(err));
 
     document.body.appendChild(f);
