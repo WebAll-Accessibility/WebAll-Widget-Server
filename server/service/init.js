@@ -4,6 +4,7 @@ const laodScript = (scriptName) => {
     s.async = true;
     s.type = 'text/javascript';
     document.getElementById('weball-content-iframe')
+                .getElementsByTagName('html')[0]
                 .getElementsByTagName('head')[0]
                 .appendChild(s);
 }
@@ -13,6 +14,7 @@ const loadStyles = (stylesheet) => {
     l.rel = 'stylesheet';
     l.href = `http://155.94.252.86:8081/css/${stylesheet}`;
     document.getElementById('weball-content-iframe')
+                .getElementsByTagName('html')[0]
                 .getElementsByTagName('head')[0]
                 .appendChild(l);
 }
