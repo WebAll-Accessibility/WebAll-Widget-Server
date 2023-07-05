@@ -8,9 +8,9 @@
 
 #weball-widget {
     position: absolute;
-    width: 10vw;
-    height: 40%;
-    min-height: 830px;
+    width: 20vw;
+    height: 50%;
+    min-height: 780px;
     min-width: 210px;
     background-color: white;
     color: black;
@@ -84,11 +84,14 @@
 }
 
 #weball-login-button {
+    border-style: solid;
     width: 100%;
     background-color: white;
     color: rgb(0, 0, 200);
     border-color: white;
     border-width: 2px;
+    border-radius: 6px;
+    height: 40%;
     animation-name: login-animation;
     animation-delay: 200ms;
     animation-duration: 500ms;
