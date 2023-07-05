@@ -100,15 +100,15 @@
 
 #weball-login-button:hover {
     animation-name: login-animation;
-    animation-delay: 200ms;
-    animation-duration: 500ms;
+    animation-delay: 90ms;
+    animation-duration: 270ms;
     animation-fill-mode: both;
 }
 
 #weball-login-button:not(:hover) {
     animation-name: login-animation-out;
-    animation-delay: 200ms;
-    animation-duration: 500ms;
+    animation-delay: 90ms;
+    animation-duration: 270ms;
     animation-fill-mode: both;
 }
 
