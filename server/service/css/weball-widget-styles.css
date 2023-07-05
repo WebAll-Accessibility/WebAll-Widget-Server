@@ -88,7 +88,7 @@
 
 #weball-login-button {
     border-style: solid;
-    width: 90%;
+    width: 100%;
     background-color: white;
     color: rgb(0, 0, 200);
     border-color: white;
@@ -97,8 +97,8 @@
     height: 40%;
     margin: 8px;
     cursor: grab;
-    left: auto;
-    right: auto;
+    left: 0;
+    right: 0;
 }
 
 #weball-login-button:hover {
