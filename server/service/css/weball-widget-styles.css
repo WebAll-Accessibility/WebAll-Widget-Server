@@ -10,7 +10,7 @@
     position: absolute;
     width: 10vw;
     height: 40%;
-    min-height: 700px;
+    min-height: 830px;
     min-width: 210px;
     background-color: white;
     color: black;
@@ -67,4 +67,46 @@
 .selected {
     background-color: blue;
     color: white;
+}
+
+#weball-banner {
+    border-radius: 6px;
+    height: 220%;
+    background-color: rgb(0, 0, 200);
+    color: white;
+}
+
+.weball-centered {
+    text-align: center;
+    left: auto;
+    right: auto;
+    margin: 10px;
+}
+
+#webal-login-button {
+    width: 100%;
+    background-color: white;
+    color: rgb(0, 0, 200);
+    border-color: white;
+    border-width: 2px;
+    animation-name: login-animation;
+    animation-delay: 70ms;
+    animation-duration: 180ms;
+}
+
+#weball-login-button:hover {
+    background-color: rgb(0, 0, 200);
+    color: white;
+}
+
+@keyframes login-animation {
+    from {
+        background-color: white;
+        color: rgb(0, 0, 200);
+    }
+
+    to {
+        background-color: rgb(0, 0, 200);
+        color: white;
+    }
 }
