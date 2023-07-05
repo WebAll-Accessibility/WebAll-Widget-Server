@@ -74,6 +74,10 @@
     height: 220%;
     background-color: rgb(0, 0, 200);
     color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .weball-centered {
@@ -82,10 +86,6 @@
     left: auto;
     right: auto;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
 #weball-login-button {
@@ -97,7 +97,6 @@
     border-width: 2px;
     border-radius: 6px;
     height: 40%;
-    margin: 4px;
 }
 
 #weball-login-button:hover {
