@@ -97,6 +97,7 @@
     border-width: 2px;
     border-radius: 6px;
     height: 40%;
+    margin: 4px;
 }
 
 #weball-login-button:hover {
