@@ -27,7 +27,7 @@ frontend.use(express.static(path.join(__dirname, './frontend')));
 const checkUser = (url, callback) => {
     databaseConnection.query('SELECT * FROM users WHERE url = ?', url, (err, result, fields) => {
         if (err) throw err;
-        callback(result);
+        callback(result)
     });
 }
 
@@ -73,7 +73,7 @@ service.listen(8081, () => {
     databaseConnection.connect((err) => {
         if (err) throw err;
         databaseConnection.query('CREATE TABLE IF NOT EXISTS users(url TEXT, pw TEXT);', (e, r) => {
-            if (e) throw e;
+            if (err) throw err;
             // console.log('Created users table');
         });
     });
