@@ -10,6 +10,8 @@
     position: absolute;
     width: 10vw;
     height: 40%;
+    min-height: 530px;
+    min-width: 180px;
     background-color: white;
     color: black;
     border-style: solid;
