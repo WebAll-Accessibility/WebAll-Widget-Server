@@ -97,6 +97,8 @@
     height: 40%;
     margin: 8px;
     cursor: grab;
+    left: auto;
+    right: auto;
 }
 
 #weball-login-button:hover {
