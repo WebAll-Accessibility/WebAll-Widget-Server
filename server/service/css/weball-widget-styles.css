@@ -30,7 +30,7 @@
     right: 50px;
     bottom: 50px;
     position: absolute;
-    border-radius: 50%;
+    border-radius: 25px;
     background-color: blue;
     color: white;
     font-size: 36pt;
