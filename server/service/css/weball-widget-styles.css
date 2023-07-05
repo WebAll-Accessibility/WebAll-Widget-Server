@@ -77,6 +77,7 @@
 }
 
 .weball-centered {
+    font-family: Arial;
     text-align: center;
     left: auto;
     right: auto;
@@ -91,13 +92,21 @@
     border-color: white;
     border-width: 2px;
     border-radius: 6px;
-    height: 35%;
+    height: 40%;
     margin: 4px;
     cursor: grab;
+    margin-bottom: 8px;
 }
 
 #weball-login-button:hover {
     animation-name: login-animation;
+    animation-delay: 200ms;
+    animation-duration: 500ms;
+    animation-fill-mode: both;
+}
+
+#weball-login-button:not(:hover) {
+    animation-name: login-animation-out;
     animation-delay: 200ms;
     animation-duration: 500ms;
     animation-fill-mode: both;
