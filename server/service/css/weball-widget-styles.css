@@ -82,6 +82,8 @@
     left: auto;
     right: auto;
     margin: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 #weball-login-button {
@@ -92,10 +94,9 @@
     border-color: white;
     border-width: 2px;
     border-radius: 6px;
-    height: 40%;
+    height: 100%;
     margin: 4px;
     cursor: grab;
-    margin-bottom: 8px;
 }
 
 #weball-login-button:hover {
