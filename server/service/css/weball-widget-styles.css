@@ -90,8 +90,10 @@
     border-color: white;
     border-width: 2px;
     animation-name: login-animation;
-    animation-delay: 70ms;
-    animation-duration: 180ms;
+    animation-delay: 200ms;
+    animation-duration: 500ms;
+    margin: 4px;
+    cursor: grab;
 }
 
 #weball-login-button:hover {
@@ -100,12 +102,12 @@
 }
 
 @keyframes login-animation {
-    from {
+    0% {
         background-color: white;
         color: rgb(0, 0, 200);
     }
 
-    to {
+    100% {
         background-color: rgb(0, 0, 200);
         color: white;
     }
