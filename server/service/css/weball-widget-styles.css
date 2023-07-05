@@ -10,13 +10,15 @@
     position: absolute;
     width: 10vw;
     height: 40%;
+    min-height: 520px;
+    min-width: 180px;
     background-color: white;
     color: black;
     border-style: solid;
     border-radius: 6px;
     border-color: rgb(200, 200, 200);
     padding: 16px;
-    gap: 8px, 8px;
+    gap: 8px;
     flex-direction: column;
     right: 50px;
     bottom: 50px;
@@ -28,8 +30,10 @@
     right: 50px;
     bottom: 50px;
     position: absolute;
-    width: 100px;
-    height: 100px;
+    border-radius: 50%;
+    background-color: blue;
+    color: white;
+    font-size: 36pt;
 }
 
 .weball-widget-button:hover {
