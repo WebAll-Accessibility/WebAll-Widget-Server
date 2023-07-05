@@ -104,7 +104,7 @@
     animation-duration: 500ms;
 }
 
-#weball-login-button:after {
+#weball-login-button:hover:after {
     animation-name: login-animation-out;
     animation-delay: 200ms;
     animation-duration: 500ms;
