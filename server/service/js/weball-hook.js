@@ -193,6 +193,7 @@ const setWeballWidget = (state) => {
     currentConfiguration.widget = state;
     setClass('weball-content-iframe', 'weball-invisible', !state);
     setClass('weball-button', 'weball-invisible', state);
+    console.log(document.getElementById('weball-button').classList);
 }
 
 const processSignal = (signal) => {
