@@ -177,7 +177,7 @@ const mutaAudio = (state) => {
     });
 }
 
-const zoom = () => {
+const zoom = (state) => {
     if (state == undefined || state == currentConfiguration.zoom)
         return;
 

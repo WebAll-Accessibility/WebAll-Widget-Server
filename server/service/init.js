@@ -21,12 +21,13 @@ const loadHTML = (documentName, id) => {
     f.src = `http://155.94.252.86:8081/html/${documentName}`
 
     document.body.appendChild(f);
+    return f;
 }
 
 loadStyles('weball-base-styles.css');
 loadStyles('weball-features-styles.css');
 laodScript('weball-hook.js');
-loadHTML('weball-widget.html', 'weball-content-iframe');
+loadHTML('weball-widget.html', 'weball-content-iframe').classList.add('weball-invisible');
 
 let wb = document.createElement('input');
 wb.type = 'button';
