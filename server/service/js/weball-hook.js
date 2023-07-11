@@ -1,16 +1,16 @@
 const currentConfiguration = {
-    widget,
-    inverted,
-    grayScale,
-    contrast,
-    saturation,
-    brightness,
-    sepia,
-    highlightLinks,
-    dyslexia,
-    zoomPointer,
-    zoom,
-    muteSounds
+    widget: undefined,
+    inverted: undefined,
+    grayScale: undefined,
+    contrast: undefined,
+    saturation: undefined,
+    brightness: undefined,
+    sepia: undefined,
+    highlightLinks: undefined,
+    dyslexia: undefined,
+    zoomPointer: undefined,
+    zoom: undefined,
+    muteSounds: undefined
 };
 
 const elementHasClass = (element, cls) => element.classList.contains(cls);
