@@ -73,6 +73,7 @@ const toggleScalaDiGrigi = () => {
     toggleClass('scala-di-grigi', 'selected');
     currentConfiguration.grayScale = !currentConfiguration.grayScale;
     update();
+    currentConfiguration = {};
 }
 
 const noWeball = () => {
