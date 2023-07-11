@@ -1,16 +1,16 @@
 const currentConfiguration = {
-    widget: false,
-    inverted: false,
-    grayScale: false,
-    contrast: false,
-    saturation: false,
-    brightness: false,
-    sepia: false,
-    highlightLinks: false,
-    dyslexia: false,
-    zoomPointer: false,
-    zoom: false,
-    muteSounds: false
+    widget,
+    inverted,
+    grayScale,
+    contrast,
+    saturation,
+    brightness,
+    sepia,
+    highlightLinks,
+    dyslexia,
+    zoomPointer,
+    zoom,
+    muteSounds
 };
 
 const elementHasClass = (element, cls) => element.classList.contains(cls);
