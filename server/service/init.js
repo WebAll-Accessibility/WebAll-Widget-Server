@@ -27,7 +27,7 @@ const loadHTML = (documentName, id) => {
 loadStyles('weball-base-styles.css');
 loadStyles('weball-features-styles.css');
 laodScript('weball-hook.js');
-loadHTML('weball-widget.html', 'weball-content-iframe').classList.add('weball-invisible');
+loadHTML('weball-widget.html', 'weball-content-iframe');
 
 let wb = document.createElement('input');
 wb.type = 'button';
