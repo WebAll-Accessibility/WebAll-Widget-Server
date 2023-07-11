@@ -189,7 +189,7 @@ const setWeballWidget = (state) => {
     if (state == undefined || state == currentConfiguration.widget)
         return;
 
-    console.log(document.body)
+    document.body.style.backgroundColor = 'red';
     currentConfiguration.widget = state;
     setClass('weball-content-iframe', 'weball-invisible', !state);
     setClass('weball-button', 'weball-invisible', state);
