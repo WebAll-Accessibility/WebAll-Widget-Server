@@ -8,3 +8,20 @@
     left: 0;
     z-index: -2147483647;
 }
+
+#weball-button {
+    display: inherit;
+    right: 50px;
+    bottom: 50px;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    font-size: 36pt;
+    background-color: blue;
+    color: white;
+}
+
+.weball-invisible {
+    display: none;
+}
