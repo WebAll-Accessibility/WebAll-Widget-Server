@@ -60,7 +60,7 @@ const setClass = (id, cls, state) => {
 }
 
 const update = () => {
-    parent.postMessage(currentConfiguration, '*');
+    parent.postMessage({ weball: currentConfiguration }, '*');
 }
 
 const toggleInvertiColori = () => {
