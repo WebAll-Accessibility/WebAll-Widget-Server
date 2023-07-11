@@ -189,6 +189,7 @@ const setWeballWidget = (state) => {
     if (state == undefined || state == currentConfiguration.widget)
         return;
 
+    console.log(state);
     currentConfiguration.widget = state;
     setClass('weball-content-iframe', 'weball-invisible', !state);
     setClass('weball-button', 'weball-invisible', state);
@@ -210,10 +211,8 @@ const processSignal = (signal) => {
 }
 
 window.addEventListener('message', (e) => {
-    console.log(e.data);
     signal = e.data;
-    if (!signal.weball)
-        return;
-
-    processSignal(signal.weball);
+    
+    if (signal.weball)
+        processSignal(signal.weball);
 });
