@@ -59,24 +59,34 @@ const setClass = (id, cls, state) => {
     setClassOnElement(document.getElementById(id), cls, state);
 }
 
-const update = () => {
-    parent.postMessage({ weball: currentConfiguration }, '*');
-    currentConfiguration = {};
+const update = (item, state) => {
+    const configuration = {
+        widget: undefined,
+        inverted: undefined,
+        grayScale: undefined,
+        contrast: undefined,
+        saturation: undefined,
+        brightness: undefined,
+        sepia: undefined,
+        highlightLinks: undefined,
+        dyslexia: undefined,
+        zoomPointer: undefined,
+        zoom: undefined,
+        muteSounds: undefined
+    };
+
+    configuration[item] = state;
+    parent.postMessage({ weball: configuration }, '*');
 }
 
 const toggleInvertiColori = () => {
-    toggleClass('inverti-colori', 'selected');
-    currentConfiguration.inverted = !currentConfiguration.inverted;
-    update();
+    update('inverted', !toggleClass('inverti-colori', 'selected'));
 }
 
 const toggleScalaDiGrigi = () => {
-    toggleClass('scala-di-grigi', 'selected');
-    currentConfiguration.grayScale = !currentConfiguration.grayScale;
-    update();
+    update('grayScale', !toggleClass('scala-di-grigi', 'selected'));
 }
 
 const noWeball = () => {
-    currentConfiguration.widget = false;
-    update();
+    update('widget', false);
 }
