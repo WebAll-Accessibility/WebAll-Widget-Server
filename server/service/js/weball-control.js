@@ -61,6 +61,7 @@ const setClass = (id, cls, state) => {
 
 const update = () => {
     parent.postMessage({ weball: currentConfiguration }, '*');
+    currentConfiguration = {};
 }
 
 const toggleInvertiColori = () => {
@@ -73,7 +74,6 @@ const toggleScalaDiGrigi = () => {
     toggleClass('scala-di-grigi', 'selected');
     currentConfiguration.grayScale = !currentConfiguration.grayScale;
     update();
-    currentConfiguration = {};
 }
 
 const noWeball = () => {
