@@ -25,19 +25,6 @@
     transition:all 0.2s ease-in-out;
 }
 
-#weball-button {
-    display: inherit;
-    right: 50px;
-    bottom: 50px;
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    font-size: 36pt;
-    background-color: blue;
-    color: white;
-}
-
 .weball-widget-button:hover {
     box-shadow:0 0 30px 0 #0000FF;
     cursor: grab;

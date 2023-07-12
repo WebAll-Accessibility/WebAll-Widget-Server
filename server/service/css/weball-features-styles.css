@@ -2,7 +2,7 @@
   filter: invert(100%);
 }
 
-.weball-grey-scale {
+.weball-gray-scale {
   filter: grayscale();
 }
 
@@ -33,7 +33,7 @@
 }
 
 .weball-zoom-pointer {
-  cursor: url('http://155.94.252.86:8081/resources/pointer.weball-svg'), auto;
+  cursor: url('http://127.0.0.1:8081/resources/pointer.weball-svg'), auto;
 }
 
 .weball-highlight {
