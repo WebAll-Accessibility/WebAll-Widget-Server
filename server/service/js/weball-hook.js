@@ -210,7 +210,6 @@ const processSignal = (signal) => {
 }
 
 window.addEventListener('message', (e) => {
-    console.log(e.data);
     signal = e.data;
     
     if (signal.weball)

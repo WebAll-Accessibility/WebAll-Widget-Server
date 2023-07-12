@@ -87,6 +87,42 @@ const toggleScalaDiGrigi = () => {
     update('grayScale', !toggleClass('scala-di-grigi', 'selected'));
 }
 
+const toggleContrasto = () => {
+    update('contrast', !toggleClass('contrasto', 'selected'));
+}
+
+const toggleSaturazione = () => {
+    update('saturation', !toggleClass('saturazione', 'selected'));
+}
+
+const toggleLuminosita = () => {
+    update('brightness', !toggleClass('luminosita', 'selected'));
+}
+
+const toggleEpilessia = () => {
+    update('sepia', !toggleClass('epilessia', 'selected'));
+}
+
+const toggleEvidenziaLink = () => {
+    update('highlightLinks', !toggleClass('evidenzia-link', 'selected'));
+}
+
+const toggleCaratteriDislessia = () => {
+    update('dyslexia', !toggleClass('caratteri-dislessia', 'selected'));
+}
+
+const toggleCursoreGrande = () => {
+    update('zoomPointer', !toggleClass('cursore-grande', 'selected'));
+}
+
+const toggleZoom = () => {
+    update('zoom', !toggleClass('zoom', 'selected'));
+}
+
+const toggleMutaAudio = () => {
+    update('muteSounds', !toggleClass('silenzia-suoni', 'selected'));
+}
+
 const noWeball = () => {
     update('widget', false);
 }
