@@ -5,11 +5,566 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Weball Widget Subdocument</title>
-
-    <link rel="stylesheet" href="http://127.0.0.1:8081/css/weball-widget-styles.css">
 </head>
-<body>
-    <script type="application/javascript" src="http://127.0.0.1:8081/js/weball-control.js"></script>
+
+<style>
+    html {
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+        font-family: sans-serif;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+        display: block;
+    }
+
+    audio, canvas, progress, video {
+        vertical-align: baseline;
+        display: inline-block;
+    }
+
+    audio:not([controls]) {
+        height: 0;
+        display: none;
+    }
+
+    [hidden], template {
+        display: none;
+    }
+
+    a {
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    a:active, a:hover {
+        outline: 0;
+    }
+
+    abbr[title] {
+        border-bottom: 1px dotted;
+    }
+
+    b, strong {
+        font-weight: bold;
+    }
+
+    dfn {
+        font-style: italic;
+    }
+
+    h1 {
+        margin: .67em 0;
+        font-size: 2em;
+    }
+
+    mark {
+        color: #000;
+        background: #ff0;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub, sup {
+        vertical-align: baseline;
+        font-size: 75%;
+        line-height: 0;
+        position: relative;
+    }
+
+    sup {
+        top: -.5em;
+    }
+
+    sub {
+        bottom: -.25em;
+    }
+
+    img {
+        border: 0;
+    }
+
+    svg:not(:root) {
+        overflow: hidden;
+    }
+
+    figure {
+        margin: 1em 40px;
+    }
+
+    hr {
+        box-sizing: content-box;
+        height: 0;
+    }
+
+    pre {
+        overflow: auto;
+    }
+
+    code, kbd, pre, samp {
+        font-family: monospace;
+        font-size: 1em;
+    }
+
+    button, input, optgroup, select, textarea {
+        color: inherit;
+        font: inherit;
+        margin: 0;
+    }
+
+    button {
+        overflow: visible;
+    }
+
+    button, select {
+        text-transform: none;
+    }
+
+    button, html input[type="button"], input[type="reset"] {
+        -webkit-appearance: button;
+        cursor: pointer;
+    }
+
+    button[disabled], html input[disabled] {
+        cursor: default;
+    }
+
+    button::-moz-focus-inner, input::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
+
+    input {
+        line-height: normal;
+    }
+
+    input[type="checkbox"], input[type="radio"] {
+        box-sizing: border-box;
+        padding: 0;
+    }
+
+    input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+        height: auto;
+    }
+
+    input[type="search"] {
+        -webkit-appearance: none;
+    }
+
+    input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+    }
+
+    fieldset {
+        border: 1px solid silver;
+        margin: 0 2px;
+        padding: .35em .625em .75em;
+    }
+
+    legend {
+        border: 0;
+        padding: 0;
+    }
+
+    textarea {
+        overflow: auto;
+    }
+
+    optgroup {
+        font-weight: bold;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    td, th {
+        padding: 0;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        height: 100%;
+    }
+
+    body {
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-height: 100vh;
+        min-width: 100vw;
+        color: #333;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 20px;
+        padding: 0;
+    }
+
+    img {
+        max-width: 100%;
+        vertical-align: middle;
+        display: inline-block;
+    }
+
+    * {
+        user-select: none;
+        scrollbar-color: #dddddd #fbfbfb;
+        scrollbar-width: 4px;
+    }
+
+    :root {
+        --white: white;
+        --black: black;
+    }
+
+    .selected {
+        background-color: #0000a5 !important;
+        color: white !important;
+    }
+
+    .weball-widget {
+        width: 25vw;
+        min-width: 450px;
+        aspect-ratio: auto;
+        object-fit: fill;
+        background-color: #dbdbdb;
+        border-radius: 20px;
+        flex-direction: column;
+        margin: 10px;
+        padding: 20px;
+        display: flex;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, .2);
+    }
+
+    .weball-title {
+        color: #0000a5;
+        font-size: 72px;
+        margin-left: 20px;
+    }
+
+    .weball-feature-list {
+        height: 100%;
+        aspect-ratio: auto;
+        object-fit: fill;
+        background-color: rgba(0, 0, 0, 0);
+        border: 0 solid #000;
+        border-radius: 0;
+        align-self: stretch;
+        margin-top: 26px;
+        margin-bottom: 26px;
+        padding-left: 5px;
+        padding-right: 5px;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        row-gap: 32px;
+    }
+
+    .weball-exit {
+        cursor: grab;
+        color: #fff;
+        text-align: center;
+        background-color: red;
+        border-radius: 10px;
+        margin-bottom: 0;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-size: 32px;
+        font-weight: 700;
+        box-shadow: 0 4px 4px 4px rgba(0, 0, 0, .2);
+    }
+
+    .weball-featureset {
+        background-color: #fff;
+        border-radius: 20px;
+        padding: 10px;
+        border: none;
+        /* box-shadow: 0 2px 4px 4px rgba(0, 0, 0, .2); */
+    }
+
+    .weball-feature-title {
+        font-size: 32px;
+        margin-top: 20px;
+        margin-left: 10px;
+        padding-left: 0;
+        color: #1A202C;
+    }
+
+    .weball-subtitle {
+        font-size: 20px;
+        margin-top: 24px;
+        margin-left: 10px;
+        padding-left: 0;
+        color: #1A202C;
+    }
+    
+    .weball-grid {
+        grid-column-gap: 16px;
+        grid-row-gap: 16px;
+        grid-template-rows: auto auto auto;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-columns: 1fr;
+        margin-top: 6px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding-left: 0;
+        display: grid;
+    }
+
+    .weball-flex {
+        row-gap: 16px;
+        column-gap: 16px;
+        margin-top: 6px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding-left: 0;
+        flex-direction: row;
+        display: flex;
+    }
+
+    .weball-button {
+        cursor: grab;
+        min-height: 53px;
+        align-items: center;
+        background-color: #FFFFFF;
+        border: 0 solid #E2E8F0;
+        box-shadow: 0 4px 4px 4px rgba(0, 0, 0, 0.1), 0 4px 4px 4px rgba(0, 0, 0, 0.06);
+        box-sizing: border-box;
+        color: #1A202C;
+        display: inline-flex;
+        justify-content: left;
+        overflow-wrap: break-word;
+        text-decoration: none;
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        text-align: left;
+        border-radius: 10px;
+        padding-left: 50px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        font-size: 1.7vmin;
+        line-height: 2vmin;
+    }
+
+    .weball-flex .weball-button {
+        padding-left: 0 !important;
+        justify-content: center !important;
+        width: 100%;
+    }
+
+    .weball-button:hover {
+        outline: solid 2px #0000a5;
+    }
+
+    @media screen and (max-width: 1440px) {
+        .weball-button {
+            font-size: max(18px, 1.7vmin);
+            line-height: max(20px, 2vmin);
+        }
+    }
+
+    @media screen and (max-width: 991px) {
+        .weball-widget {
+            width: 75vw;
+        }
+
+        .weball-button {
+            font-size: 24px;
+            line-height: 28px;
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        .weball-widget {
+            width: auto;
+            display: block;
+            left: 0;
+            overflow: scroll;
+        }
+
+        .weball-feature-list {
+            height: auto;
+            aspect-ratio: auto;
+            overflow: visible;
+        }
+
+        .weball-exit {
+            position: absolute;
+            top: 40px;
+            right: 16px;
+        }
+    }
+
+    @media screen and (max-width: 479px) {
+        .weball-widget {
+            width: auto;
+            min-width: 200px;
+            display: flex;
+        }
+
+        .weball-title {
+            font-size: 48px;
+        }
+
+        .weball-exit {
+            position: static;
+        }
+
+        .weball-grid {
+            flex-direction: column;
+            display: flex;
+        }
+
+        .weball-flex {
+            flex-direction: column;
+        }
+
+        .weball-button {
+            font-size: 5.4vw;
+        }
+    }
+</style>
+
+<script type="text/javascript">
+    const currentConfiguration = {};
+
+    const elementHasClass = (element, cls) => element.classList.contains(cls);
+    const hasClass = (id, cls) => elementHasClass(document.getElementById(id), cls);
+
+    const removeClassFromElement = (element, cls) => {
+        if (element.classList.contains(cls))
+            element.classList.remove(cls);
+    }
+
+    const addClassToElement = (element, cls) => {
+        if (!element.classList.contains(cls))
+            element.classList.add(cls);
+    }
+
+    const removeClass = (id, cls) => {
+        removeClassFromElement(document.getElementById(id), cls);
+    }
+
+    const addClass = (id, cls) => {
+        addClassToElement(document.getElementById(id), cls);
+    }
+
+    const toggleClassOnElement = (element, cls) => {
+        
+        const contains = element.classList.contains(cls);
+        const operation = (contains) ? removeClassFromElement
+                                        : addClassToElement;
+
+        operation(element, cls);
+        return contains;
+    }
+
+    const toggleClass = (button, cls) => {
+        const element =  document.getElementById(button);
+        return toggleClassOnElement(element, cls);
+    }
+
+    const setClassOnElement = (element, cls, state) => {
+        const operation = (state) ? addClassToElement
+                                    : removeClassFromElement;
+
+        operation(element, cls);
+    }
+
+    const setClass = (id, cls, state) => {
+        setClassOnElement(document.getElementById(id), cls, state);
+    }
+
+    const update = (item, state) => {
+        const configuration = {};
+        configuration[item] = state;
+        parent.postMessage({ weball: configuration }, '*');
+    }
+
+    const toggleEpilessia = () => {
+        update('sepia', !toggleClass('epilessia', 'selected'));
+    }
+
+    const toggleEvidenziaLink = () => {
+        update('highlightLinks', !toggleClass('evidenzia-link', 'selected'));
+    }
+
+    const toggleCaratteriDislessia = () => {
+        update('dyslexia', !toggleClass('caratteri-dislessia', 'selected'));
+    }
+
+    const toggleCursoreGrande = () => {
+        update('zoomPointer', !toggleClass('cursore-grande', 'selected'));
+    }
+
+    const toggleZoom = () => {
+        update('weball-sight-zoom', !toggleClass('weball-sight-zoom', 'selected'));
+    }
+
+    const toggleMutaAudio = () => {
+        update('muteSounds', !toggleClass('silenzia-suoni', 'selected'));
+    }
+
+    const noWeball = () => {
+        update('widget', false);
+    }
+
+    const perform = (elem) => {
+        const group = elem.getAttribute('group');
+        const setting = elem.getAttribute('setting');
+        const modifier = elem.getAttribute('modifier');
+        const id = elem.id;
+
+        if (!group) {
+            update(setting, !toggleClass(id, 'selected'));
+            return;
+        }
+
+        document.querySelectorAll('.selected').forEach((item) => {
+            if (item.getAttribute('group') === group && item.id !== id) {
+                if (item.hasAttribute('independent')) {
+                    update(item.getAttribute('setting'), !toggleClass(item.id, 'selected'));
+                } else {
+                    removeClassFromElement(item, 'selected');
+                }
+            }
+        });
+
+        update(setting, modifier);
+        addClassToElement(elem, 'selected');
+    }
+
+    const init = () => {
+        document.querySelectorAll(".weball-button").forEach((item) => {
+            item.onclick = () => perform(item);
+
+            if (item.hasAttribute('selected')) {
+                perform(item);
+            }
+        });
+    }
+</script>
+
+<body onload="init()">
+    <!-- <script type="application/javascript" src="http://127.0.0.1:8081/js/weball-control.js"></script>
     <div id="weball-widget" class="flex">
         <div id="weball-banner">
             <h1 class="weball-centered">Weball</h1>
@@ -28,6 +583,58 @@
         <input type="button" class="weball-widget-button" id="zoom" value="ZOOM" onclick="toggleZoom()">
         <input type="button" class="weball-widget-button" id="silenzia-suoni" value="SILENZIA SUONI" onclick="toggleMutaAudio()">
         <input type="button" class="weball-widget-button" id="weball-widget-exit-button" value="CHIUDI" onclick="noWeball()">
+    </div> -->
+
+    <div id="weball-widget" class="weball-widget">
+        <h1 id="weball-title" class="weball-title">WebAll</h1>
+        <div id="weball-feature-list" class="weball-feature-list">
+            <div id="weball-sight" class="weball-featureset">
+                <h2 id="weball-sight-title" class="weball-feature-title">VISTA</h2>
+                <div id="weball-sight-grid" class="weball-grid">
+                    <button id="weball-sight-invert"        class="weball-button"   setting="inverted">Inverti colori</button>
+                    <button id="weball-sight-grayscale"     class="weball-button"   setting="grayScale">Scala di grigi</button>
+                    <button id="weball-sight-contrast"      class="weball-button"   setting="contrast">Aumenta contrasto</button>
+                    <button id="weball-sight-saturation"    class="weball-button"   setting="saturation">Aumenta saturazione</button>
+                    <button id="weball-sight-brightness"    class="weball-button"   setting="brightness">Aumenta luminosità</button>
+                </div>
+                <h3 id="weball-sight-zoom-title" class="weball-subtitle">ZOOM</h3>
+                <div id="weball-sight-zoom-panel" class="weball-flex">
+                    <button id="weball-sight-zoom1"    class="weball-button"   setting="zoom"  group="zoom"    modifier=1  selected>Off</button>
+                    <button id="weball-sight-zoom2"    class="weball-button"   setting="zoom"  group="zoom"    modifier=2>200%</button>
+                    <button id="weball-sight-zoom3"    class="weball-button"   setting="zoom"  group="zoom"    modifier=3>300%</button>
+                </div>
+            </div>
+
+            <div id="weball-dyslexia" class="weball-featureset">
+                <h2 id="weball-dyslexia-title" class="weball-feature-title">DISLESSIA</h2>
+                <div id="weball-dyslexia-grid" class="weball-grid">
+                    <button id="weball-dyslexia-font" class="weball-button" setting="font">Carattere per dislessici</button>
+                </div>
+                <h3 id="weball-dyslexia-interline-title" class="weball-subtitle">INTERLINEA</h3>
+                <div id="weball-dyslexia-interline-panel" class="weball-flex">
+                    <button id="weball-dyslexia-interline1"    class="weball-button"   setting="interline"  group="interline"    modifier=1  selected>Default</button>
+                    <button id="weball-dyslexia-interline15"   class="weball-button"   setting="interline"  group="interline"    modifier=1.5>1.5x</button>
+                    <button id="weball-dyslexia-interline2"    class="weball-button"   setting="interline"  group="interline"    modifier=2>2x</button>
+                    <button id="weball-dyslexia-interline25"   class="weball-button"   setting="interline"  group="interline"    modifier=2.5>2.5x</button>
+                </div>
+                <h3 id="weball-dyslexia-charspace-title" class="weball-subtitle">INTERSPAZIO</h3>
+                <div id="weball-dyslexia-charspace-panel" class="weball-flex">
+                    <button id="weball-dyslexia-charspace1"    class="weball-button"   setting="sharspace"  group="sharspace"    modifier=1  selected>Default</button>
+                    <button id="weball-dyslexia-charspace15"   class="weball-button"   setting="sharspace"  group="sharspace"    modifier=1.5>1.5x</button>
+                    <button id="weball-dyslexia-charspace25"   class="weball-button"   setting="sharspace"  group="sharspace"    modifier=2.5>2.5x</button>
+                    <button id="weball-dyslexia-charspace35"   class="weball-button"   setting="sharspace"  group="sharspace"    modifier=3.5>3.5x</button>
+                </div>
+                <h3 id="weball-dyslexia-wordspace-title" class="weball-subtitle">SPAZIATURA PAROLE</h3>
+                <div id="weball-dyslexia-wordspace-panel" class="weball-flex">
+                    <button id="weball-dyslexia-wordspace1"    class="weball-button"   setting="wordspace"  group="wordspace"    modifier=1  selected>Default</button>
+                    <button id="weball-dyslexia-wordspace5"    class="weball-button"   setting="wordspace"  group="wordspace"    modifier=5>5</button>
+                    <button id="weball-dyslexia-wordspace10"   class="weball-button"   setting="wordspace"  group="wordspace"    modifier=10>10</button>
+                    <button id="weball-dyslexia-wordspace15"   class="weball-button"   setting="wordspace"  group="wordspace"    modifier=15>15</button>
+                </div>
+            </div>
+        </div>
+        
+        <button id="weball-exit" class="weball-exit" onclick="noWeball()">CHIUDI</button>
     </div>
 </body>
 </html>

@@ -1,17 +1,4 @@
-const currentConfiguration = {
-    widget: undefined,
-    inverted: undefined,
-    grayScale: undefined,
-    contrast: undefined,
-    saturation: undefined,
-    brightness: undefined,
-    sepia: undefined,
-    highlightLinks: undefined,
-    dyslexia: undefined,
-    zoomPointer: undefined,
-    zoom: undefined,
-    muteSounds: undefined
-};
+let currentConfiguration = {};
 
 const elementHasClass = (element, cls) => element.classList.contains(cls);
 const hasClass = (id, cls) => elementHasClass(document.getElementById(id), cls);
@@ -182,7 +169,10 @@ const zoom = (state) => {
         return;
 
     currentConfiguration.zoom = state;
-    setClassOnElement(document.documentElement, 'weball-zoom', state);
+    document.body.style.transformOrigin = '0 0';
+    document.body.style.transform = `scale(${state})`;
+    console.log(document.body.style.transform);
+    // setClassOnElement(document.body, 'weball-zoom', state);
 }
 
 const setWeballWidget = (state) => {

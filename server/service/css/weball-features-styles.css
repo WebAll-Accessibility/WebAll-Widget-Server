@@ -1,43 +1,46 @@
 .weball-inverted {
-  filter: invert(100%);
+  filter: invert(100%) !important
 }
 
 .weball-gray-scale {
-  filter: grayscale();
+  filter: grayscale() !important;
 }
 
 .weball-contrast {
-  filter: contrast(200%);
+  filter: contrast(200%) !important;
 }
 
 .weball-saturation {
-  filter: saturate(200%);
-}
+  filter: saturate(200%) !important;
+} 
 
 .weball-brightness {
-  filter: brightness(200%);
+  filter: brightness(200%) !important;
 }
 
 .weball-sepia {
-  filter: sepia(50%);
+  filter: sepia(50%) !important;
 }
 
 .weball-dyslexia {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  letter-spacing: 2px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  letter-spacing: 2px !important;
 }
 
 .weball-zoom {
-  zoom: 2; 
-  -moz-transform: scale(2); 
+  /* scale: 2; */
+  transform-origin: 0 0;
+  transform: scale(2);
+  /* zoom: 200% !important; */
+  /* -moz-transform: scale(2) !important;  */
 }
 
 .weball-zoom-pointer {
-  cursor: url('http://127.0.0.1:8081/resources/pointer.weball-svg'), auto;
+  cursor: url('http://127.0.0.1:8081/resources/pointer.weball-svg'), auto !important;
 }
 
 .weball-highlight {
-  filter: contrast(200%);
-  border-style: solid;
-  border-width: 1px;
+  filter: contrast(200%) !important;
+  border-style: solid !important;
+  border-width: 1px !important;
 }

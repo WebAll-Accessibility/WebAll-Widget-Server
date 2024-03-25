@@ -18,9 +18,10 @@ const loadStyles = (stylesheet) => {
 const loadHTML = (documentName, id) => {
     let f = document.createElement('iframe');
     f.id = id;
+    f.classList.add('weball-invisible');
     f.src = `http://127.0.0.1:8081/html/${documentName}`
 
-    document.body.appendChild(f);
+    document.documentElement.appendChild(f);
     return f;
 }
 
@@ -36,4 +37,4 @@ wb.id = 'weball-button';
 wb.onclick = () => {
     postMessage({ weball: { widget: true }})
 };
-document.body.appendChild(wb);
+document.documentElement.appendChild(wb);

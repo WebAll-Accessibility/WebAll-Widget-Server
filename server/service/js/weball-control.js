@@ -1,17 +1,4 @@
-const currentConfiguration = {
-    widget: undefined,
-    inverted: undefined,
-    grayScale: undefined,
-    contrast: undefined,
-    saturation: undefined,
-    brightness: undefined,
-    sepia: undefined,
-    highlightLinks: undefined,
-    dyslexia: undefined,
-    zoomPointer: undefined,
-    zoom: undefined,
-    muteSounds: undefined
-};
+const currentConfiguration = {};
 
 const elementHasClass = (element, cls) => element.classList.contains(cls);
 const hasClass = (id, cls) => elementHasClass(document.getElementById(id), cls);
@@ -60,23 +47,7 @@ const setClass = (id, cls, state) => {
 }
 
 const update = (item, state) => {
-    const configuration = {
-        widget: undefined,
-        inverted: undefined,
-        grayScale: undefined,
-        contrast: undefined,
-        saturation: undefined,
-        brightness: undefined,
-        sepia: undefined,
-        highlightLinks: undefined,
-        dyslexia: undefined,
-        zoomPointer: undefined,
-        zoom: undefined,
-        muteSounds: undefined
-    };
-
-    configuration[item] = state;
-    parent.postMessage({ weball: configuration }, '*');
+    parent.postMessage({ weball: { item: state } }, '*');
 }
 
 const toggleInvertiColori = () => {
