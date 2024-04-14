@@ -12,7 +12,7 @@
                 password: document.getElementById('password-input').value
             };
 
-            fetch("http://52.47.171.54:8081/register", {
+            fetch("__WA_SERVER_ADDRESS/register", {
                 method: "POST",
                 headers: {'Content-Type': 'application/json'}, 
                 body: JSON.stringify(data)

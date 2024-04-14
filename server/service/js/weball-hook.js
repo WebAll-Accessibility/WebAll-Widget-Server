@@ -171,7 +171,7 @@ const zoom = (state) => {
     currentConfiguration.zoom = state;
     document.body.style.transformOrigin = '0 0';
     document.body.style.transform = `scale(${state})`;
-    console.log(document.body.style.transform);
+    // console.log(document.body.style.transform);
     // setClassOnElement(document.body, 'weball-zoom', state);
 }
 

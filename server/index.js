@@ -81,12 +81,18 @@ service.listen(8081, () => {
 });
 
 service.get('*', (req, res) => {
-    const referrer = new URL(req.get('Referrer')).hostname.replace(/^[^.]+\./g, '');
+    let referrer = req.get('Referrer');
 
     if (!referrer) {
         res.status(403).end();
         return;
     }
+
+    referrer = referrer.replaceAll('http://', '');
+    referrer = referrer.replaceAll('https://', '');
+    referrer = referrer.split('/')[0];
+    referrer = referrer.split(':')[0];
+    referrer = referrer.replaceAll(' ', '');
 
     checkUser(referrer, (user) => {
         if (!(user && user.length > 0)) {
@@ -99,7 +105,22 @@ service.get('*', (req, res) => {
             return;
         }
 
-        res.sendFile(path.join(__dirname, `./service${req.path}`));
+        let file = fs.readFileSync(path.join(__dirname, `./service${req.path}`), 'utf8');
+        file = file.replaceAll('__WA_SERVER_ADDRESS', process.env.WA_SERVER_ADDRESS);
+
+        switch (req.path.split('.')[1]) {
+            case 'css':
+                res.setHeader('Content-Type', 'text/css');
+                break;
+            case 'html':
+                res.setHeader('Content-Type', 'text/html');
+                break;
+            case 'js':
+                res.setHeader('Content-Type', 'text/javascript');
+                break;
+        }
+
+        res.send(file);
     });
 });
 
