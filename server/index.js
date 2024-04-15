@@ -9,7 +9,6 @@ require('dotenv').config();
 
 // Ugly global variables
 const service = express();
-const frontend = express();
 
 const databaseConnection = mysql.createConnection({
     user: process.env.DB_USER,
@@ -22,7 +21,6 @@ const databaseConnection = mysql.createConnection({
 // Express setup
 service.use(express.json());
 service.use(cors());
-frontend.use(express.static(path.join(__dirname, './frontend')));
 
 
 // Utility functions
@@ -80,7 +78,32 @@ service.listen(8081, () => {
     });
 });
 
-service.get('*', (req, res) => {
+service.get('/', (req, res) => {
+    if (!fs.existsSync(path.join(__dirname, `.${req.path}`))) {
+        res.status(404).end();
+        return;
+    }
+
+    let file = fs.readFileSync(path.join(__dirname, `.{req.path}`), 'utf8');
+    file = file.replaceAll('__WA_SERVER_ADDRESS', process.env.WA_SERVER_ADDRESS);
+
+    switch (req.path.split('.')[1]) {
+        case 'css':
+            res.setHeader('Content-Type', 'text/css');
+            break;
+        case 'html':
+            res.setHeader('Content-Type', 'text/html');
+            break;
+        case 'js':
+            res.setHeader('Content-Type', 'text/javascript');
+            break;
+    }
+
+    res.send(file);
+
+});
+
+service.get('/service/*', (req, res) => {
     let referrer = req.get('Referrer');
 
     if (!referrer) {
@@ -100,12 +123,12 @@ service.get('*', (req, res) => {
             return;
         }
         
-        if (!fs.existsSync(path.join(__dirname, `./service${req.path}`))) {
+        if (!fs.existsSync(path.join(__dirname, `.${req.path}`))) {
             res.status(404).end();
             return;
         }
 
-        let file = fs.readFileSync(path.join(__dirname, `./service${req.path}`), 'utf8');
+        let file = fs.readFileSync(path.join(__dirname, `.{req.path}`), 'utf8');
         file = file.replaceAll('__WA_SERVER_ADDRESS', process.env.WA_SERVER_ADDRESS);
 
         switch (req.path.split('.')[1]) {
@@ -124,5 +147,3 @@ service.get('*', (req, res) => {
     });
 });
 
-frontend.listen(8082, () => {
-});
