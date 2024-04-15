@@ -1,6 +1,6 @@
 const laodScript = (scriptName) => {
     let s = document.createElement('script');
-    s.src = `__WA_SERVER_ADDRESS/js/${scriptName}`;
+    s.src = `__WA_SERVER_ADDRESS/service/js/${scriptName}`;
     s.async = true;
     s.type = 'text/javascript';
     document.getElementsByTagName('head')[0]
@@ -10,7 +10,7 @@ const laodScript = (scriptName) => {
 const loadStyles = (stylesheet) => {
     let l = document.createElement('link');
     l.rel = 'stylesheet';
-    l.href = `__WA_SERVER_ADDRESS/css/${stylesheet}`;
+    l.href = `__WA_SERVER_ADDRESS/service/css/${stylesheet}`;
     document.getElementsByTagName('head')[0]
                 .appendChild(l);
 }
@@ -19,7 +19,7 @@ const loadHTML = (documentName, id) => {
     let f = document.createElement('iframe');
     f.id = id;
     f.classList.add('weball-invisible');
-    f.src = `__WA_SERVER_ADDRESS/html/${documentName}`
+    f.src = `__WA_SERVER_ADDRESS/service/html/${documentName}`
 
     document.documentElement.appendChild(f);
     return f;
