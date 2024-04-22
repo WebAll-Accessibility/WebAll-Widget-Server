@@ -68,16 +68,6 @@ service.post('/register', (req, res) => {
 });
 
 
-// Application init
-service.listen(8081, () => {
-    databaseConnection.connect((err) => {
-        if (err) throw err;
-        databaseConnection.query('CREATE TABLE IF NOT EXISTS users(url TEXT, pw TEXT);', (e, r) => {
-            if (err) throw err;
-        });
-    });
-});
-
 service.get('/', (req, res) => {
     if (!fs.existsSync(path.join(__dirname, `.${req.path}`))) {
         res.status(404).end();
