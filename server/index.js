@@ -147,3 +147,11 @@ service.get('/service/*', (req, res) => {
     });
 });
 
+service.listen(80, () => {
+    databaseConnection.connect((err) => {
+        if (err) throw err;
+        databaseConnection.query('CREATE TABLE IF NOT EXISTS users(url TEXT, pw TEXT);', (e, r) => {
+            if (err) throw err;
+        });
+    });
+});
