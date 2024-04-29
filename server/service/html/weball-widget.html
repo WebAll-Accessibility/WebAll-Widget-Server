@@ -498,6 +498,7 @@
         configuration[item] = state;
         parent.postMessage({ weball: configuration }, '*');
 
+        console.log(localStorage.getItem('weball-settings'));
         if (!localStorage.getItem('weball-settings')) {
             localStorage.setItem('weball-settings', {});
         }
