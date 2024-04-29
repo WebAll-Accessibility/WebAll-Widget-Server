@@ -24,6 +24,8 @@
     text-align: left;
     border: none;
     font-size: 18pt;
+    cursor: grab;
+    white-space: normal;
     background-color: blue;
     color: white;
 }
