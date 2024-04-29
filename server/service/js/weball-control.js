@@ -53,7 +53,9 @@ const update = (item, state) => {
         localStorage.setItem('weball-settings', {});
     }
 
-    localStorage.getItem('weball-settings')[item] = state;
+    let tmp = localStorage.getItem('weball-settings');
+    tmp[item] = state;
+    localStorage.setItem('weball-settings', tmp);
 }
 
 const toggleInvertiColori = () => {
