@@ -29,11 +29,11 @@
     white-space: normal;
     background-color: blue;
     color: white;
-    box-shadow: 4px 4px 4px 4px blue;
+    box-shadow: 4px 4px 4px 4px navy;
 }
 
 #weball-button:hover {
-    border: solid white 4px;
+    outline: solid white 2px;
 }
 
 .weball-invisible {
