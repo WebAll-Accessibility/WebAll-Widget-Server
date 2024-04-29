@@ -68,16 +68,6 @@ service.post('/register', (req, res) => {
 });
 
 
-// Application init
-service.listen(8081, () => {
-    databaseConnection.connect((err) => {
-        if (err) throw err;
-        databaseConnection.query('CREATE TABLE IF NOT EXISTS users(url TEXT, pw TEXT);', (e, r) => {
-            if (err) throw err;
-        });
-    });
-});
-
 service.get('/', (req, res) => {
     if (!fs.existsSync(path.join(__dirname, `.${req.path}`))) {
         res.status(404).end();
@@ -128,7 +118,7 @@ service.get('/service/*', (req, res) => {
             return;
         }
 
-        let file = fs.readFileSync(path.join(__dirname, `.{req.path}`), 'utf8');
+        let file = fs.readFileSync(path.join(__dirname, `.${req.path}`), 'utf8');
         file = file.replaceAll('__WA_SERVER_ADDRESS', process.env.WA_SERVER_ADDRESS);
 
         switch (req.path.split('.')[1]) {
@@ -147,3 +137,11 @@ service.get('/service/*', (req, res) => {
     });
 });
 
+service.listen(80, () => {
+    databaseConnection.connect((err) => {
+        if (err) throw err;
+        databaseConnection.query('CREATE TABLE IF NOT EXISTS users(url TEXT, pw TEXT);', (e, r) => {
+            if (err) throw err;
+        });
+    });
+});
