@@ -16,7 +16,8 @@
     right: 2vw;
     bottom: 2vw;
     max-width: 98vw;
-    min-width: 130px;
+    min-width: 80px;
+    width: 80px;
     height: 3vh;
     min-height: 50px;
     max-height: 98vh;
