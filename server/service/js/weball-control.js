@@ -48,6 +48,12 @@ const setClass = (id, cls, state) => {
 
 const update = (item, state) => {
     parent.postMessage({ weball: { item: state } }, '*');
+    
+    if (!localStorage.getItem('weball-settings')) {
+        localStorage.setItem('weball-settings', {});
+    }
+
+    localStorage.getItem('weball-settings')[item] = state;
 }
 
 const toggleInvertiColori = () => {
