@@ -32,7 +32,7 @@ loadHTML('weball-widget.html', 'weball-content-iframe');
 
 let wb = document.createElement('input');
 wb.type = 'button';
-wb.value = 'W';
+wb.value = 'Weball Accessibility';
 wb.id = 'weball-button';
 wb.onclick = () => {
     postMessage({ weball: { widget: true }})

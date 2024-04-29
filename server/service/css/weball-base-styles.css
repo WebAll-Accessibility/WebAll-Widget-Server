@@ -13,13 +13,12 @@
 
 #weball-button {
     display: inherit;
-    right: 50px;
-    bottom: 50px;
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    font-size: 36pt;
+    right: 5vw;
+    bottom: 5vw;
+    max-width: 95%;
+    min-width: 100px;
+    height: 10vh;
+    text-align: left;
     background-color: blue;
     color: white;
 }
