@@ -498,14 +498,13 @@
         configuration[item] = state;
         parent.postMessage({ weball: configuration }, '*');
 
-        console.log(localStorage.getItem('weball-settings'));
         if (!localStorage.getItem('weball-settings')) {
-            localStorage.setItem('weball-settings', {});
+            localStorage.setItem('weball-settings', JSON.stringify({}));
         }
 
-        let tmp = localStorage.getItem('weball-settings');
+        let tmp = JSON.parse(localStorage.getItem('weball-settings'));
         tmp[item] = state;
-        localStorage.setItem('weball-settings', tmp);
+        localStorage.setItem('weball-settings', JSON.stringify(tmp));
     }
 
     const toggleEpilessia = () => {
