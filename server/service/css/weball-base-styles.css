@@ -15,12 +15,22 @@
     display: inherit;
     right: 5vw;
     bottom: 5vw;
-    max-width: 95%;
+    max-width: 95vw;
     min-width: 100px;
-    height: 10vh;
+    height: 3vh;
+    min-height: 50px;
+    max-height: 95vh;
+    position: absolute;
     text-align: left;
+    border: none;
+    font-size: 18pt;
     background-color: blue;
     color: white;
+}
+
+#weball-button:hover {
+    border: solid white 2px;
+    font-weight: bold;
 }
 
 .weball-invisible {
