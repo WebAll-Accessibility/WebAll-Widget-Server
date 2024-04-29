@@ -29,7 +29,7 @@
     white-space: normal;
     background-color: blue;
     color: white;
-    box-shadow: 4px 4px 4px 4px navy;
+    box-shadow: 4px 0px 4px 4px navy;
 }
 
 #weball-button:hover {
