@@ -90,7 +90,6 @@ service.get('/', (req, res) => {
     }
 
     res.send(file);
-
 });
 
 service.get('/service/*', (req, res) => {
@@ -113,7 +112,7 @@ service.get('/service/*', (req, res) => {
             return;
         }
         
-        if (!fs.existsSync(path.join(__dirname, `.${req.path}`))) {
+        if (!fs.existsSync(path.join(__dirname, `./${req.path}`))) {
             res.status(404).end();
             return;
         }
