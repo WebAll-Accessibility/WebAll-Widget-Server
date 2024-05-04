@@ -117,7 +117,7 @@ service.get('/service/*', (req, res) => {
             return;
         }
 
-        let file = fs.readFileSync(path.join(__dirname, `.${req.path}`), 'utf8');
+        let file = fs.readFileSync(path.join(__dirname, `./${req.path}`), 'utf8');
         file = file.replaceAll('__WA_SERVER_ADDRESS', process.env.WA_SERVER_ADDRESS);
 
         switch (req.path.split('.')[1]) {
