@@ -1,1 +1,1 @@
-cd ./src && sudo nohup node index.js & echo "WebAll Server Started!" &
+cd ./src && nohup node index.js & echo "WebAll Server Started!" &
