@@ -26,10 +26,10 @@ service.use(cors());
 
 // Utility functions
 const checkUser = (url, callback) => {
-    // databaseConnection.query('SELECT * FROM users WHERE url = ?', url, (err, result, fields) => {
-    //     if (err) throw err;
-    //     callback(result)
-    // });
+    databaseConnection.query('SELECT * FROM users WHERE url = ?', url, (err, result, fields) => {
+        if (err) throw err;
+        callback(result)
+    });
 }
 
 
@@ -107,11 +107,11 @@ service.get('/service/*', (req, res) => {
     referrer = referrer.split(':')[0];
     referrer = referrer.replaceAll(' ', '');
 
-    checkUser(referrer, (user) => {
-        if (!(user && user.length > 0)) {
-            res.status(403).end();
-            return;
-        }
+    // checkUser(referrer, (user) => {
+        // if (!(user && user.length > 0)) {
+        //     res.status(403).end();
+        //     return;
+        // }
         
         if (!fs.existsSync(path.join(__dirname, `./${req.path}`))) {
             res.status(404).end();
@@ -134,7 +134,7 @@ service.get('/service/*', (req, res) => {
         }
 
         res.send(file);
-    });
+    // });
 });
 
 service.listen(80, () => {
