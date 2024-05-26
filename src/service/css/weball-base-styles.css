@@ -21,7 +21,7 @@
     height: 3vh;
     min-height: 80px;
     max-height: 98vh;
-    position: absolute;
+    position: fixed;
     text-align: left;
     border: none;
     font-size: 18pt;
@@ -29,6 +29,7 @@
     white-space: normal;
     background-color: blue;
     color: white;
+    z-index: 2147483647 !important;
 }
 
 #weball-button:hover {
