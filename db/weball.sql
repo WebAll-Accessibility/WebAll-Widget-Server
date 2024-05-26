@@ -122,24 +122,24 @@ ON Payments(id_subscription);
 CREATE INDEX iSubscriptionPreferences
 ON SubscriptionPreferences(id_subscription, pref_key);
 
-CREATE PROCEDURE get_subscription @Domain nvarchar(64)
-AS
-    SELECT *
-    FROM Subscriptions
-    WHERE domain = @Domain
-GO;
+-- CREATE PROCEDURE get_subscription @Domain nvarchar(64)
+-- AS
+--     SELECT *
+--     FROM Subscriptions
+--     WHERE domain = @Domain
+-- GO;
 
-CREATE PROCEDURE get_pref @Domain nvarchar(64), @Key nvarchar(48)
-AS
-    SELECT b.*
-    FROM Subscriptions a
-    INNER JOIN SubscriptionPreferences b ON a.id_subscription = b.id_subscription
-    WHERE a.domain = @Domain AND b.pref_key = @Key
-GO;
+-- CREATE PROCEDURE get_pref @Domain nvarchar(64), @Key nvarchar(48)
+-- AS
+--     SELECT b.*
+--     FROM Subscriptions a
+--     INNER JOIN SubscriptionPreferences b ON a.id_subscription = b.id_subscription
+--     WHERE a.domain = @Domain AND b.pref_key = @Key
+-- GO;
 
-CREATE PROCEDURE get_all_pref @Domain nvarchar(64)
-AS
-    SELECT b.*
-    FROM Subscriptions a
-    WHERE a.domain = @Domain
-GO;
+-- CREATE PROCEDURE get_all_pref @Domain nvarchar(64)
+-- AS
+--     SELECT b.*
+--     FROM Subscriptions a
+--     WHERE a.domain = @Domain
+-- GO;
