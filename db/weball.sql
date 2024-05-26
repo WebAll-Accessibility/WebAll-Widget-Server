@@ -49,6 +49,7 @@ CREATE TABLE Subscriptions
     id_customer INT NOT NULL,
     domain VARCHAR(64) NOT NULL UNIQUE,
     num_hits INT DEFAULT 0,
+    num_yearly_hits INT DEFAULT 0,
     activation_date DATE NOT NULL,
     price_ceiling FLOAT DEFAULT 0,
     price_due FLOAT DEFAULT 0,
