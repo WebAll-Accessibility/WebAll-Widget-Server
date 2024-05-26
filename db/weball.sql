@@ -3,7 +3,7 @@ CREATE DATABASE weball;
 USE weball;
 
 
-CREATE TABLE IF NOT EXISTS Customers
+CREATE TABLE Customers
 (
     id_customer INT PRIMARY KEY AUTO_INCREMENT,
     c_type CHAR(1) NOT NULL CHECK (c_type IN ('I', 'O')),
@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS Customers
     phone VARCHAR(16) NOT NULL
 ) ENGINE=INNODB;
 
-CREATE TABLE IF NOT EXISTS Organizations
+CREATE TABLE Organizations
 (
     id_customer INT PRIMARY KEY,
     name VARCHAR(255) NOT NULL UNIQUE,
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS Organizations
     FOREIGN KEY (id_customer) REFERENCES Customers(id_customer)
 ) ENGINE=INNODB;
 
-CREATE TABLE IF NOT EXISTS Individuals
+CREATE TABLE Individuals
 (
     id_customer INT PRIMARY KEY,
     first_name VARCHAR(64) NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS Individuals
     FOREIGN KEY (id_customer) REFERENCES Customers(id_customer)
 ) ENGINE=INNODB;
 
-CREATE TABLE IF NOT EXISTS Plans
+CREATE TABLE Plans
 (
     id_plan INT PRIMARY KEY AUTO_INCREMENT,
     max_hits INT NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS Plans
     duration INT NOT NULL
 ) ENGINE=INNODB;
 
-CREATE TABLE IF NOT EXISTS Subscriptions
+CREATE TABLE Subscriptions
 (
     id_subscription INT PRIMARY KEY AUTO_INCREMENT,
     id_plan INT NOT NULL,
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS Subscriptions
     FOREIGN KEY (id_plan) REFERENCES Plans(id_plan)
 ) ENGINE=INNODB;
 
-CREATE TABLE IF NOT EXISTS Payments
+CREATE TABLE Payments
 (
     id_payment INT PRIMARY KEY AUTO_INCREMENT,
     id_subscription INT NOT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS Payments
     FOREIGN KEY (id_subscription) REFERENCES Subscriptions(id_subscription)
 ) ENGINE=INNODB;
 
-CREATE TABLE IF NOT EXISTS SubscriptionPreferences
+CREATE TABLE SubscriptionPreferences
 (
     id_preference INT PRIMARY KEY AUTO_INCREMENT,
     id_subscription INT NOT NULL,
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS SubscriptionPreferences
     FOREIGN KEY (id_subscription) REFERENCES Subscriptions(id_subscription)
 ) ENGINE=INNODB;
 
-CREATE VIEW IF NOT EXISTS InstitutionalCustomers
+CREATE VIEW InstitutionalCustomers
 AS
     SELECT a.id_customer,
            a.email,
@@ -94,7 +94,7 @@ AS
     INNER JOIN Organizations b
         ON a.id_customer = b.id_customer;
 
-CREATE VIEW IF NOT EXISTS IndividualCustomers
+CREATE VIEW IndividualCustomers
 AS
     SELECT a.id_customer,
            a.email,
@@ -110,16 +110,16 @@ AS
     INNER JOIN Individuals b
         ON a.id_customer = b.id_customer;
 
-CREATE INDEX IF NOT EXISTS iSubscriptions
+CREATE INDEX iSubscriptions
 ON Subscriptions(domain, id_customer);
 
-CREATE INDEX IF NOT EXISTS iCustomers
+CREATE INDEX iCustomers
 ON Customers(email);
 
-CREATE INDEX IF NOT EXISTS iPayments
+CREATE INDEX iPayments
 ON Payments(id_subscription);
 
-CREATE INDEX IF NOT EXISTS iSubscriptionPreferences
+CREATE INDEX iSubscriptionPreferences
 ON SubscriptionPreferences(id_subscription, pref_key);
 
 CREATE PROCEDURE get_subscription @Domain nvarchar(64)
