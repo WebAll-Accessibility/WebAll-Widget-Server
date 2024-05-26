@@ -18,7 +18,7 @@ WebAll Widget Server è un'implementazione di WebAll realizzata con NodeJS.
 <h2>Come avviarlo</h2>
 Nella riga di comando del server dedicato al database:
 ```
-sh setup.sh <utente db> <password db>
+sh setup.sh <utente db>
 ```
 
 Sul server web, creare un file `.env` nella directory `src/` con il seguente contenuto:
