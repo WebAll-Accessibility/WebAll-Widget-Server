@@ -137,7 +137,7 @@ service.get('/service/*', (req, res) => {
     // });
 });
 
-service.listen(80, () => {
+service.listen(8080, () => {
     databaseConnection.connect((err) => {
         if (err) throw err;
     });
