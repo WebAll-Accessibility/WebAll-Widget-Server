@@ -67,7 +67,7 @@ const invertiColori = (state) => {
         return;
     
     currentConfiguration.inverted = state;
-    setClassOnElement(document.documentElement, 'weball-inverted', state);
+    // setClassOnElement(document.documentElement, 'weball-inverted', state);
 }
 
 const scalaDiGrigi = (state) => {
@@ -75,7 +75,7 @@ const scalaDiGrigi = (state) => {
         return;
     
     currentConfiguration.grayScale = state;
-    setClassOnElement(document.documentElement, 'weball-gray-scale', state);
+    // setClassOnElement(document.documentElement, 'weball-gray-scale', state);
 }
 
 const contrasto = (state) => {
@@ -83,7 +83,7 @@ const contrasto = (state) => {
         return;
     
     currentConfiguration.contrast = state;
-    setClassOnElement(document.documentElement, 'weball-contrast', state);
+    // setClassOnElement(document.documentElement, 'weball-contrast', state);
 }
 
 const saturazione = (state) => {
@@ -91,7 +91,7 @@ const saturazione = (state) => {
         return;
     
     currentConfiguration.saturation = state;
-    setClassOnElement(document.documentElement, 'weball-saturation', state);
+    // setClassOnElement(document.documentElement, 'weball-saturation', state);
 }
 
 const luminosita = (state) => {
@@ -99,7 +99,7 @@ const luminosita = (state) => {
         return;
     
     currentConfiguration.brightness = state;
-    setClassOnElement(document.documentElement, 'weball-brightness', state);
+    // setClassOnElement(document.documentElement, 'weball-brightness', state);
 }
 
 const epilessia = (state) => {
@@ -107,7 +107,7 @@ const epilessia = (state) => {
         return;
     
     currentConfiguration.sepia = state;
-    setClassOnElement(document.documentElement, 'weball-sepia', state);
+    // setClassOnElement(document.documentElement, 'weball-sepia', state);
 }
 
 const caratteriDislessia = (state) => {
@@ -197,6 +197,28 @@ const processSignal = (signal) => {
     cursoreGrande(signal.zoomPointer);
     zoom(signal.zoom);
     mutaAudio(signal.muteSounds);
+
+    let effectMap = {
+        inverted: 'invert(100%)',
+        grayScale: 'grayscale()',
+        contrast: 'contrast(200%)',
+        saturation: 'saturate(200%)',
+        brightness: 'brightness(200%)',
+        sepia: 'sepia(50%)'
+    };
+
+    let globalEffects = '';
+
+    for (const key in Object.keys(effectMap)) {
+        if (currentConfiguration[key]) {
+            globalEffects += effectMap[key] + ' ';
+        }
+    }
+
+    if (globalEffects) {
+        globalEffects += ' !important';
+        document.documentElement.style.filter = globalEffects;
+    }
 }
 
 window.addEventListener('message', (e) => {
