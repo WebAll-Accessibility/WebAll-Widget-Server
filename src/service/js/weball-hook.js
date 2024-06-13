@@ -198,7 +198,7 @@ const processSignal = (signal) => {
     zoom(signal.zoom);
     mutaAudio(signal.muteSounds);
 
-    let effectMap = {
+    const effectMap = {
         inverted: 'invert(100%)',
         grayScale: 'grayscale()',
         contrast: 'contrast(200%)',
@@ -212,6 +212,7 @@ const processSignal = (signal) => {
     for (const key in Object.keys(effectMap)) {
         if (currentConfiguration[key]) {
             globalEffects += effectMap[key] + ' ';
+            console.log(key);
         }
     }
 
