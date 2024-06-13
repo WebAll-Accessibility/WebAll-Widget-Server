@@ -218,10 +218,8 @@ const processSignal = (signal) => {
 
     console.log(globalEffects);
 
-    if (globalEffects) {
-        globalEffects += ' !important';
-        document.documentElement.style.filter = globalEffects;
-    }
+    // globalEffects += ' !important';
+    document.documentElement.style.filter = globalEffects;
 }
 
 window.addEventListener('message', (e) => {
