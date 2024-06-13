@@ -556,8 +556,12 @@
             }
         });
 
-        update(setting, modifier);
-        addClassToElement(elem, 'selected');
+        if (!elem.hasAttribute('independent')) {
+            update(setting, modifier);
+            addClassToElement(elem, 'selected');
+        } else {
+            update(setting, !toggleClass(id, 'selected'));
+        }
     }
 
     const init = () => {
