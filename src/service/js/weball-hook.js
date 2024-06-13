@@ -210,11 +210,13 @@ const processSignal = (signal) => {
     let globalEffects = '';
 
     for (const key of Object.keys(effectMap)) {
-        if (currentConfiguration[key]) {
+        if (currentConfiguration[key] == true) {
             globalEffects += effectMap[key] + ' ';
             console.log(key);
         }
     }
+
+    console.log(globalEffects);
 
     if (globalEffects) {
         globalEffects += ' !important';
