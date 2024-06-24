@@ -565,22 +565,24 @@
     }
 
     const init = () => {
-        // saved = localStorage.getItem('weball-settings');
-        // if (saved) {
-        //     saved = JSON.parse(saved);
-        // }
+        saved = localStorage.getItem('weball-settings');
+        if (saved) {
+            saved = JSON.parse(saved);
+        }
         
         document.querySelectorAll(".weball-button").forEach((item) => {
             item.onclick = () => perform(item);
 
-            // const group = elem.getAttribute('group');
-            // const setting = elem.getAttribute('setting');
-            // const modifier = elem.getAttribute('modifier');
+            const group = elem.getAttribute('group');
+            const setting = elem.getAttribute('setting');
+            const modifier = elem.getAttribute('modifier');
 
-            // if (saved && saved[setting]
-            //     && (saved[setting] == setting) {
-                
-            // }
+            if (saved && saved[setting]) {
+                if (saved[setting] == setting)
+                    perform(item);
+                else if (item.hasAttribute('selected'))
+                    item.removeAttribute('selected');
+            }
 
             if (item.hasAttribute('selected')) {
                 perform(item);
