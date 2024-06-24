@@ -578,7 +578,8 @@
             const modifier = elem.getAttribute('modifier');
 
             if (saved && saved[setting]) {
-                if (saved[setting] == setting)
+                if (saved[setting] == modifier
+                    || saved[setting])
                     perform(item);
                 else if (item.hasAttribute('selected'))
                     item.removeAttribute('selected');
