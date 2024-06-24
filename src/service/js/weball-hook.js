@@ -114,7 +114,7 @@ const caratteriDislessia = (state) => {
     if (state == undefined || state == currentConfiguration.font)
         return;
     
-    currentConfiguration.dyslexia = state;	
+    currentConfiguration.font = state;	
     traverse(document.documentElement, (parent, child) => {
         const operation = (!state)
                                 ? removeClassFromElement
@@ -122,6 +122,44 @@ const caratteriDislessia = (state) => {
         
         operation(child, 'weball-dyslexia');
     });
+}
+
+const charspace = (state) => {
+    if (state == undefined || state == currentConfiguration.charspace)
+        return;
+    
+    traverse(document.documentElement, (parent, child) => {
+        if (currentConfiguration.charspace) {
+            const oldClass = `weball-letter-spacing-${currentConfiguration.charspace}`.replace('.', '');
+            removeClassFromElement(child, oldClass);
+        }
+        
+        if (state) {
+            const newClass = `weball-letter-spacing-${state}`.replace('.', '');
+            addClassToElement(child, newClass);
+        }
+    });
+
+    currentConfiguration.charspace state;	
+}
+
+const wordspace = (state) => {
+    if (state == undefined || state == currentConfiguration.wordspace)
+        return;
+    
+    traverse(document.documentElement, (parent, child) => {
+        if (currentConfiguration.charspace) {
+            const oldClass = `weball-word-spacing-${currentConfiguration.charspace}`.replace('.', '');
+            removeClassFromElement(child, oldClass);
+        }
+        
+        if (state) {
+            const newClass = `weball-word-spacing-${state}`.replace('.', '');
+            addClassToElement(child, newClass);
+        }
+    });
+
+    currentConfiguration.charspace state;	
 }
 
 const cursoreGrande = (state) => {
@@ -194,8 +232,9 @@ const processSignal = (signal) => {
     epilessia(signal.sepia);
     evidenziaLink(signal.highlightLinks);
     caratteriDislessia(signal.font);
-    cursoreGrande(signal.zoomPointer);
     zoom(signal.zoom);
+    charspace(signal.charspace);
+    wordspace(signal.wordspace);
     mutaAudio(signal.muteSounds);
 
     const effectMap = {

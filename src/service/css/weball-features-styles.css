@@ -24,7 +24,30 @@
 
 .weball-dyslexia {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
-  letter-spacing: 2px !important;
+}
+
+.weball-letter-spacing-15 {
+  letter-spacing: 1.5px !important;
+}
+
+.weball-letter-spacing-25 {
+  letter-spacing: 2.5px !important;
+}
+
+.weball-letter-spacing-35 {
+  letter-spacing: 3.5px !important;
+}
+
+.weball-word-spacing-5 {
+  word-spacing: 5px !important;
+}
+
+.weball-word-spacing-10 {
+  word-spacing: 10px !important;
+}
+
+.weball-word-spacing-15 {
+  word-spacing: 15px !important;
 }
 
 .weball-zoom {
