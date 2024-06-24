@@ -111,7 +111,7 @@ const epilessia = (state) => {
 }
 
 const caratteriDislessia = (state) => {
-    if (state == undefined || state == currentConfiguration.dyslexia)
+    if (state == undefined || state == currentConfiguration.font)
         return;
     
     currentConfiguration.dyslexia = state;	
@@ -193,7 +193,7 @@ const processSignal = (signal) => {
     luminosita(signal.brightness);
     epilessia(signal.sepia);
     evidenziaLink(signal.highlightLinks);
-    caratteriDislessia(signal.dyslexia);
+    caratteriDislessia(signal.font);
     cursoreGrande(signal.zoomPointer);
     zoom(signal.zoom);
     mutaAudio(signal.muteSounds);
