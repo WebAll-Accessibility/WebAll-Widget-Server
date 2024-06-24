@@ -582,7 +582,7 @@
             if (saved && saved[setting]) {
                 console.log('first');
                 if (saved[setting] == modifier
-                    || saved[setting])
+                    || !modifier)
                     perform(item);
                 else if (item.hasAttribute('selected'))
                     item.removeAttribute('selected');
