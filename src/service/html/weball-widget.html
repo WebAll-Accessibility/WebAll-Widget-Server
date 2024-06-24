@@ -579,10 +579,8 @@
 
             if (saved && saved[setting]) {
                 if (saved[setting] == modifier
-                    || saved[setting] === true) {
-                        console.log(`${setting} - ${saved[setting]} - ${modifier} `)
+                    || saved[setting] === true)
                         perform(item);
-                    }
                 else if (item.hasAttribute('selected'))
                     item.removeAttribute('selected');
             }
