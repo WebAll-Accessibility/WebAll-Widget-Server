@@ -577,7 +577,10 @@
             const setting = elem.getAttribute('setting');
             const modifier = elem.getAttribute('modifier');
 
+            console.log(saved);
+
             if (saved && saved[setting]) {
+                console.log('first');
                 if (saved[setting] == modifier
                     || saved[setting])
                     perform(item);
