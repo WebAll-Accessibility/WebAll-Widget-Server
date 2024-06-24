@@ -577,12 +577,9 @@
             const setting = item.getAttribute('setting');
             const modifier = item.getAttribute('modifier');
 
-            console.log(saved);
-
             if (saved && saved[setting]) {
-                console.log('first');
                 if (saved[setting] == modifier
-                    || !modifier)
+                    || !group)
                     perform(item);
                 else if (item.hasAttribute('selected'))
                     item.removeAttribute('selected');
