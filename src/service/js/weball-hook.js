@@ -149,7 +149,7 @@ const wordspace = (state) => {
     
     traverse(document.documentElement, (parent, child) => {
         if (currentConfiguration.wordspace) {
-            const oldClass = `weball-word-spacing-${currentConfiguration.charspace}`.replace('.', '');
+            const oldClass = `weball-word-spacing-${currentConfiguration.wordspace}`.replace('.', '');
             removeClassFromElement(child, oldClass);
         }
         
