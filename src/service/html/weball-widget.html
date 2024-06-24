@@ -573,9 +573,9 @@
         document.querySelectorAll(".weball-button").forEach((item) => {
             item.onclick = () => perform(item);
 
-            const group = elem.getAttribute('group');
-            const setting = elem.getAttribute('setting');
-            const modifier = elem.getAttribute('modifier');
+            const group = item.getAttribute('group');
+            const setting = item.getAttribute('setting');
+            const modifier = item.getAttribute('modifier');
 
             console.log(saved);
 
