@@ -159,7 +159,7 @@ const wordspace = (state) => {
         }
     });
 
-    currentConfiguration.charspace = state;	
+    currentConfiguration.wordspace = state;	
 }
 
 const cursoreGrande = (state) => {
