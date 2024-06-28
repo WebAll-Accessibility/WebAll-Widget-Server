@@ -40,7 +40,7 @@ wb.onclick = () => {
     postMessage({ weball: { widget: true }})
 };
 
-wb.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     wb.style.display = ds;
 });
 
