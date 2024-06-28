@@ -35,6 +35,7 @@ CREATE TABLE Individuals
 CREATE TABLE Plans
 (
     id_plan INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(64) NOT NULL UNIQUE,
     max_hits INT NOT NULL,
     max_yearly_hits INT NOT NULL,
     price FLOAT NOT NULL,
