@@ -40,6 +40,6 @@ wb.onclick = () => {
     postMessage({ weball: { widget: true }})
 };
 wb.onload = () => {
-    wb.style.display = ds;
+    // wb.style.display = ds;
 }
 document.documentElement.appendChild(wb);
