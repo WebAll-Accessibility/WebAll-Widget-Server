@@ -34,7 +34,10 @@ let wb = document.createElement('input');
 wb.type = 'button';
 wb.value = 'WebAll Accessibility';
 wb.id = 'weball-button';
+const ds = wb.style.display;
+wb.style.display = 'none';
 wb.onclick = () => {
     postMessage({ weball: { widget: true }})
 };
 document.documentElement.appendChild(wb);
+wb.style.display = ds;
