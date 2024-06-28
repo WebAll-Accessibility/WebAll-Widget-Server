@@ -39,7 +39,9 @@ wb.style.display = 'none';
 wb.onclick = () => {
     postMessage({ weball: { widget: true }})
 };
-wb.onload = () => {
-    // wb.style.display = ds;
-}
+
+wb.addEventListener('DOMContentLoaded', () => {
+    wb.style.display = ds;
+});
+
 document.documentElement.appendChild(wb);
