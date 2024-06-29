@@ -32,7 +32,7 @@ loadHTML('weball-widget.html', 'weball-content-iframe');
 
 let wb = document.createElement('input');
 wb.type = 'button';
-wb.value = 'WebAll Accessibility';
+wb.value = 'WebAll';
 wb.id = 'weball-button';
 // const ds = wb.style.display;
 // wb.style.display = 'none';
