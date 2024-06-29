@@ -23,17 +23,22 @@
     max-height: 98vh;
     position: fixed;
     text-align: left;
+    font-family: Arial, sans-serif;
     border: none;
     font-size: 18pt;
+    font-weight: bold;
     cursor: grab;
     white-space: normal;
-    background-color: blue;
+    background-color: #31005f;
+    padding-left: 8px;
     color: white;
     z-index: 2147483647 !important;
+    border-radius: 6px;
 }
 
 #weball-button:hover {
-    outline: solid white 2px;
+    transition: 100mx;
+    background-color: #48008b;
 }
 
 .weball-invisible {
