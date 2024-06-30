@@ -5,15 +5,16 @@ const laodScript = (scriptName) => {
     s.type = 'text/javascript';
     document.getElementsByTagName('head')[0]
                 .appendChild(s);
+    return s;
 }
 
 const loadStyles = (stylesheet) => {
     let l = document.createElement('link');
     l.rel = 'stylesheet';
     l.href = `__WA_SERVER_ADDRESS/service/css/${stylesheet}`;
-    l.async = false;
     document.getElementsByTagName('head')[0]
                 .appendChild(l);
+    return l;
 }
 
 const loadHTML = (documentName, id) => {
@@ -26,17 +27,24 @@ const loadHTML = (documentName, id) => {
     return f;
 }
 
-loadStyles('weball-base-styles.css');
-loadStyles('weball-features-styles.css');
-laodScript('weball-hook.js');
-loadHTML('weball-widget.html', 'weball-content-iframe');
+const base = loadStyles('weball-base-styles.css');
+base.onload = () => {
+    const feature = loadStyles('weball-features-styles.css');
+    feature.onload = () => {
+        const hook = laodScript('weball-hook.js');
+        hook.onload = () => {
+            const widget = loadHTML('weball-widget.html', 'weball-content-iframe');
+            widget.onload = () => {
+                let wb = document.createElement('input');
+                wb.type = 'button';
+                wb.value = 'WebAll';
+                wb.id = 'weball-button';
+                wb.onclick = () => {
+                    postMessage({ weball: { widget: true }})
+                };
 
-let wb = document.createElement('input');
-wb.type = 'button';
-wb.value = 'WebAll';
-wb.id = 'weball-button';
-wb.onclick = () => {
-    postMessage({ weball: { widget: true }})
-};
-
-document.documentElement.appendChild(wb);
+                document.documentElement.appendChild(wb);
+            }
+        }
+    }
+}
