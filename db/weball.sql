@@ -11,7 +11,7 @@ CREATE TABLE Customers
     password_hash TEXT NOT NULL,
     billing_address TEXT NOT NULL,
     registration_date DATE NOT NULL,
-    phone VARCHAR(16) NOT NULL
+    phone VARCHAR(16) NOT NULL UNIQUE
 ) ENGINE=INNODB;
 
 CREATE TABLE Organizations
