@@ -25,49 +25,23 @@ service.use(cors());
 
 
 // Utility functions
-const checkUser = (url, callback) => {
-    databaseConnection.query('SELECT * FROM users WHERE url = ?', url, (err, result, fields) => {
+const checkUser = (referrer, callback) => {
+    databaseConnection.query(`
+    SELECT a.*, b.max_hits, b.max_yearly_hits, b.price_per_req
+    FROM Subscriptions a
+    INNER JOIN Plans b ON a.id_plan = b.id_plan
+    WHERE a.domain = ?`,
+    referrer, (err, result, fields) => {
         if (err) throw err;
-        callback(result)
+        databaseConnection.query(`
+        UPDATE Subscriptions
+        SET num_hits = num_hits + 1, num_yearly_hits = num_yearly_hits + 1
+        WHERE id_customer = ?
+        `, referrer, (err, ignored, fields) => {
+            callback(result)
+        });
     });
 }
-
-
-// Request handlers
-service.post('/register', (req, res) => {
-    const rr = req.body;
-    
-    if (!rr.url || !rr.password) {
-        res.send({
-            status: 'Failed',
-            message: 'Some fields are not filled'
-        });
-
-        return;
-    }
-
-    checkUser(rr.url, (result) => {
-        if (result && result.length > 0) {
-            res.send({
-                status: 'Failed',
-                message: 'URL already registered'
-            });
-
-            return;
-        }
-
-        const values = [rr.url, rr.password];
-        databaseConnection.query('INSERT INTO users (url, pw) VALUES (?, ?)', values, (err, result) => {
-            if (err) throw err;
-            
-            res.send({
-                status: 'Success',
-                message: 'URL registered successfully'
-            });
-        });
-    });
-});
-
 
 service.get('/', (req, res) => {
     if (!fs.existsSync(path.join(__dirname, `.${req.path}`))) {
@@ -107,11 +81,11 @@ service.get('/service/*', (req, res) => {
     referrer = referrer.split(':')[0];
     referrer = referrer.replaceAll(' ', '');
 
-    // checkUser(referrer, (user) => {
-        // if (!(user && user.length > 0)) {
-        //     res.status(403).end();
-        //     return;
-        // }
+    checkUser(referrer, (user) => {
+        if (!(user && user.length > 0)) {
+            res.status(403).end();
+            return;
+        }
         
         if (!fs.existsSync(path.join(__dirname, `./${req.path}`))) {
             res.status(404).end();
