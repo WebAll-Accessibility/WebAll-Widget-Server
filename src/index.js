@@ -36,7 +36,7 @@ const checkUser = (referrer, callback) => {
         databaseConnection.query(`
         UPDATE Subscriptions
         SET num_hits = num_hits + 1, num_yearly_hits = num_yearly_hits + 1
-        WHERE id_customer = ?
+        WHERE domain = ?
         `, referrer, (err, ignored, fields) => {
             callback(result)
         });
