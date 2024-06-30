@@ -108,7 +108,7 @@ service.get('/service/*', (req, res) => {
         }
 
         res.send(file);
-    // });
+    });
 });
 
 service.listen(8080, () => {
