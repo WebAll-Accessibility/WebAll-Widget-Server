@@ -11,6 +11,7 @@ const loadStyles = (stylesheet) => {
     let l = document.createElement('link');
     l.rel = 'stylesheet';
     l.href = `__WA_SERVER_ADDRESS/service/css/${stylesheet}`;
+    l.async = false;
     document.getElementsByTagName('head')[0]
                 .appendChild(l);
 }
@@ -34,14 +35,8 @@ let wb = document.createElement('input');
 wb.type = 'button';
 wb.value = 'WebAll';
 wb.id = 'weball-button';
-// const ds = wb.style.display;
-// wb.style.display = 'none';
 wb.onclick = () => {
     postMessage({ weball: { widget: true }})
 };
-
-// wb.addEventListener('DOMContentLoaded', () => {
-//     wb.style.display = ds;
-// });
 
 document.documentElement.appendChild(wb);
