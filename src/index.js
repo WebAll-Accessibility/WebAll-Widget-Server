@@ -18,7 +18,6 @@ const databaseConnection = mysql.createConnection({
     multipleStatements: true
 });
 
-
 // Express setup
 service.use(express.json());
 service.use(cors());
@@ -111,8 +110,13 @@ service.get('/service/*', (req, res) => {
     });
 });
 
+const keepalive = () => {
+    databaseConnection.ping()
+}
+
 service.listen(8080, () => {
     databaseConnection.connect((err) => {
         if (err) throw err;
+        setInterval(keepalive, 1000);
     });
 });
