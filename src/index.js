@@ -32,13 +32,11 @@ const checkUser = (referrer, callback) => {
     WHERE a.domain = ?`,
     referrer, (err, result, fields) => {
         if (err) throw err;
-        databaseConnection.query(`
-        UPDATE Subscriptions
-        SET num_hits = num_hits + 1, num_yearly_hits = num_yearly_hits + 1
-        WHERE domain = ?
-        `, referrer, (err, ignored, fields) => {
-            callback(result)
-        });
+        // databaseConnection.query(`
+        //         `, referrer, (err, ignored, fields) => {
+        //     callback(result)
+        // });
+        callback(result);
     });
 }
 
@@ -104,6 +102,15 @@ service.get('/service/*', (req, res) => {
             case 'js':
                 res.setHeader('Content-Type', 'text/javascript');
                 break;
+        }
+
+        if (req.path == '/service/init.js'
+            || req.path == 'service/init.js') {
+            databaseConnection.query(`
+            UPDATE Subscriptions
+            SET num_hits = num_hits + 1, num_yearly_hits = num_yearly_hits + 1
+            WHERE domain = ?
+            `, referrer, (i1, i2, i3) => {})
         }
 
         res.send(file);
